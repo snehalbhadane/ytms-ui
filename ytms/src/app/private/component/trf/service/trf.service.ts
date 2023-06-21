@@ -3,13 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/auth-guard/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrfService {
-
-  constructor(private http: HttpClient) { }
+  user!:any;
+  constructor(private http: HttpClient, private authService: AuthService) {
+    
+  }
 
   // get trf list
   getTrfList(): Observable<any> {
@@ -18,6 +21,7 @@ export class TrfService {
 
   // submit trf form data
   submit(form: any, associateList: any): Observable<any> {
+    this.user = this.authService.getLoginUserDetails();
     let obj = {
       "trainingTitle": form.value.trainingTitle,
       "trainingType": form.value.trainingType,
@@ -30,6 +34,7 @@ export class TrfService {
       "noOfParticipants": form.value.noOfParticipants,
       "startDate": form.value.startDate,
       "endDate": form.value.endDate,
+      "createdBy" : this.user.email,
       "associates": associateList
     }
     return this.http.post(environment.baseUrl + environment.createTrf, JSON.stringify(obj),
@@ -46,6 +51,7 @@ export class TrfService {
 
   // update trf by id
   updateByTrfId(id: number, form: any, associateList: any): Observable<any> {
+    this.user = this.authService.getLoginUserDetails();
     let obj = {
       "trainingTitle": form.value.trainingTitle,
       "trainingType": form.value.trainingType,
@@ -58,6 +64,7 @@ export class TrfService {
       "noOfParticipants": form.value.noOfParticipants,
       "startDate": form.value.startDate,
       "endDate": form.value.endDate,
+      "createdBy" : this.user.email,
       "associates": associateList
     }
     return this.http.put(environment.baseUrl + environment.updateTrf+"/"+id, JSON.stringify(obj),

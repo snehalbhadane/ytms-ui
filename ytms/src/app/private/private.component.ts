@@ -10,7 +10,9 @@ import { AuthService } from '../auth-guard/auth.service';
 export class PrivateComponent {
 
   userName!: string;
-  
+  role!:any;
+  imageLetter!:string;
+
   @ViewChild('headertoggle')
   toggle!: ElementRef;
 
@@ -35,7 +37,9 @@ export class PrivateComponent {
 
   ngOnInit(): void {
     let user = this.authService.getLoginUserDetails();
-    this.userName = user.firstName + user.lastName;
+    this.userName = user.firstName + " " + user.lastName;
+    this.imageLetter = user.firstName.charAt(0).toUpperCase()+user.lastName.charAt(0).toUpperCase()
+    this.role = user.role;
   }
 
   ngAfterViewInit() {

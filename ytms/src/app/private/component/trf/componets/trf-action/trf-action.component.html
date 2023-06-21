@@ -1,12 +1,13 @@
-<div style="display: flex; justify-content: space-around;">
+<div style="display: flex; justify-content: space-around;    margin-top: 1em;">
     <!-- <button type="button" class="btn btn-light"> <i class="fa fa-ellipsis-v" aria-hidden="true"
             style="color: #293e40; cursor: pointer;"></i>
     </button> -->
-    <button placement="right" ngbTooltip="View" type="button" class="btn btn-light" (click) = "viewTrf()"> <i class="fa fa-eye" aria-hidden="true"
-            style="color: #293e40; cursor: pointer;"></i>
+    <!-- <button placement="right" ngbTooltip="View" type="button" class="btn btn-light" (click) = "viewTrf()"> 
+        <i class="fa fa-eye" aria-hidden="true" style="color: #293e40; cursor: pointer;"></i>
     </button>
-    <button placement="left" ngbTooltip="Edit" *ngIf="params.data.status === 'PENDING'" type="button" class="btn btn-light" (click) = "editTrf()"> <i class="fa-regular fa-pen-to-square"
-            style="color: #293e40; cursor: pointer;"></i>
-    </button>
-
+    <button placement="left" ngbTooltip="Edit" *ngIf="isEditShow" type="button" class="btn btn-light" (click) = "editTrf()"> 
+        <i class="fa-regular fa-pen-to-square" style="color: #293e40; cursor: pointer;"></i>
+    </button> -->
+    <i class="fa fa-eye" aria-hidden="true" style="color: #293e40; cursor: pointer; font-size: large;" placement="right" ngbTooltip="View" (click) = "viewTrf()"></i>
+    <i class="fa-regular fa-pen-to-square" *ngIf="isEditShow" style="color: #293e40; cursor: pointer; font-size: large;" placement="left" ngbTooltip="Edit" (click) = "editTrf()"></i>
 </div>

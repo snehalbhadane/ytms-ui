@@ -38,11 +38,11 @@ export class RegisterComponent implements OnInit {
     passwordConfirm: new FormControl(null, [Validators.required]),
     designation: new FormControl(null, [Validators.required]),
     location: new FormControl(null, [Validators.required]),
-    project: new FormControl(null, [Validators.required]),
+    project: new FormControl(null),
     experience: new FormControl(null, [Validators.required]),
     empId: new FormControl(null, [Validators.required]),
     gender: new FormControl(null, [Validators.required]),
-    birthday: new FormControl(null, [Validators.required]),
+    birthday: new FormControl(null),
     phoneNumber: new FormControl(null, [Validators.required]),
   },
     // add custom Validators to the form, to make sure that password and passwordConfirm are equal

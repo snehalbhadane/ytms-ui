@@ -1,10 +1,11 @@
 import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ColDef,GridOptions,GridReadyEvent } from 'ag-grid-community';
+import { ColDef, GridOptions, GridReadyEvent } from 'ag-grid-community';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import * as XLSX from 'xlsx'; 
+import * as XLSX from 'xlsx';
 import { ToastrService } from 'ngx-toastr';
 import { TrfService } from '../../service/trf.service';
+import { DatePipe, formatDate } from '@angular/common';
 
 
 @Component({
@@ -15,22 +16,24 @@ import { TrfService } from '../../service/trf.service';
 export class CreateTrfComponent implements OnInit, AfterViewChecked {
 
   fileValue: any;
-  associateList : any[] = [];
-  mode : string  = "create";
-  headerValue : string = "Create Form";
-  trfId : number = 0;
-  gridApi : any;
-  gridColumnApi : any;
+  associateList: any[] = [];
+  mode: string = "create";
+  headerValue: string = "Create Form";
+  trfId: number = 0;
+  gridApi: any;
+  gridColumnApi: any;
+  minStartDate: any;
+  minEndDate: any;
 
   columnDefs: ColDef[] = [
-    {headerName: 'Emp Id', field: 'empId', pinned: 'left', width:100 },
-    {headerName: 'Emp Name', field: 'empName', pinned: 'left'},
-    {headerName: 'Exprience', field: 'exprience', width:150},
-    {headerName: 'Grade', field: 'grade', width:100},
-    {headerName: 'Current Skill', field: 'currentSkill'},
-    {headerName: 'Current Allocation', field: 'currentAllocation'},
-    {headerName: 'Project', field: 'project'},
-    {headerName: 'Upgraded Skill Set', field: 'upgradedSkillSet'}
+    { headerName: 'Emp Id', field: 'empId', pinned: 'left', width: 100 },
+    { headerName: 'Emp Name', field: 'empName', pinned: 'left' },
+    { headerName: 'Exprience', field: 'exprience', width: 150 },
+    { headerName: 'Grade', field: 'grade', width: 100 },
+    { headerName: 'Current Skill', field: 'currentSkill' },
+    { headerName: 'Current Allocation', field: 'currentAllocation' },
+    { headerName: 'Project', field: 'project' },
+    { headerName: 'Upgraded Skill Set', field: 'upgradedSkillSet' }
     // {headerName: 'Action', pinned: 'right', width: 120} 
   ];
   rowData = [];
@@ -40,7 +43,7 @@ export class CreateTrfComponent implements OnInit, AfterViewChecked {
     trainingType: new FormControl(null, [Validators.required]),
     resourceType: new FormControl(null, [Validators.required]),
     duration: new FormControl(null, [Validators.required]),
-    projectName: new FormControl(null, [Validators.required]),
+    projectName: new FormControl(null),
     purposeOfTraining: new FormControl(null, [Validators.required]),
     noOfParticipants: new FormControl(null, [Validators.required]),
     initiatedFrom: new FormControl(null, [Validators.required]),
@@ -53,7 +56,7 @@ export class CreateTrfComponent implements OnInit, AfterViewChecked {
     filter: true,
   };
 
-  public gridOptions : GridOptions = {
+  public gridOptions: GridOptions = {
     columnDefs: this.columnDefs,
     rowSelection: 'single',
     onRowClicked: event => console.log('A row was clicked'),
@@ -61,54 +64,79 @@ export class CreateTrfComponent implements OnInit, AfterViewChecked {
     onGridReady: event => console.log('The grid is now ready'),
   }
 
-  constructor(private router: Router, private route : ActivatedRoute, private toastrService: ToastrService, private trfService: TrfService) { }
-  
+  constructor(private router: Router, private route: ActivatedRoute, private toastrService: ToastrService, private trfService: TrfService) { }
+
   ngAfterViewChecked(): void {
     this.gridOptions.api?.setRowData(this.associateList);
   }
 
   ngOnInit(): void {
+    const datePipe = new DatePipe('en-Us');
+    this.minStartDate = datePipe.transform(new Date(), 'yyyy-MM-dd');
     this.route.queryParams.subscribe(
       params => {
-         if(params['json']){
+        if (params['json']) {
           let json = JSON.parse(params['json']);
-          if(json){
-           this.mode = json.mode;
-           if(this.mode === "view"){
-            this.headerValue = "View Form";
-           }else if(this.mode === "edit"){
-            this.headerValue = "Update Form";
-           }
-           this.trfId = json.data.trfId;
-           this.trfForm.setValue({
-             trainingTitle: json.data.trainingTitle,
-             trainingType: json.data.trainingType,
-             resourceType: json.data.resourceType,
-             duration: json.data.duration,
-             projectName: json.data.projectName,
-             purposeOfTraining: json.data.purposeOfTraining,
-             noOfParticipants: json.data.noOfParticipants,
-             initiatedFrom: json.data.initiatedFrom,
-             startDate: json.data.startDate,
-             endDate: json.data.endDate
-           });
-           if(this.mode === 'view'){
-            this.trfForm.controls['trainingTitle'].disable();
-            this.trfForm.controls['trainingType'].disable();
-            this.trfForm.controls['resourceType'].disable();
-            this.trfForm.controls['duration'].disable();
-            this.trfForm.controls['projectName'].disable();
-            this.trfForm.controls['purposeOfTraining'].disable();
-            this.trfForm.controls['initiatedFrom'].disable();
-            this.trfForm.controls['noOfParticipants'].disable();
-            this.trfForm.controls['startDate'].disable();
-            this.trfForm.controls['endDate'].disable();
-           }
-           this.associateList = json.data.associates;
+          if (json) {
+            this.mode = json.mode;
+            if (this.mode === "view") {
+              this.headerValue = "View Form";
+            } else if (this.mode === "edit") {
+              this.headerValue = "Update Form";
+            }
+            this.trfId = json.data.trfId;
+            this.trfForm.setValue({
+              trainingTitle: json.data.trainingTitle,
+              trainingType: json.data.trainingType,
+              resourceType: json.data.resourceType,
+              duration: json.data.duration,
+              projectName: json.data.projectName,
+              purposeOfTraining: json.data.purposeOfTraining,
+              noOfParticipants: json.data.noOfParticipants,
+              initiatedFrom: json.data.initiatedFrom,
+              startDate: json.data.startDate,
+              endDate: json.data.endDate
+            });
+            if (this.mode === 'view') {
+              this.trfForm.controls['trainingTitle'].disable();
+              this.trfForm.controls['trainingType'].disable();
+              this.trfForm.controls['resourceType'].disable();
+              this.trfForm.controls['duration'].disable();
+              this.trfForm.controls['projectName'].disable();
+              this.trfForm.controls['purposeOfTraining'].disable();
+              this.trfForm.controls['initiatedFrom'].disable();
+              this.trfForm.controls['noOfParticipants'].disable();
+              this.trfForm.controls['startDate'].disable();
+              this.trfForm.controls['endDate'].disable();
+            }
+            this.associateList = json.data.associates;
           }
-         }
+        }
       }
     )
+  }
+
+  onStartDateChange(event: any) {
+    const datePipe = new DatePipe('en-Us');
+    this.minEndDate = datePipe.transform(event.target.value, 'yyyy-MM-dd');
+    this.trfForm.controls['endDate'].setValue(null);
+  }
+
+  onEndDateChange(event: any) {
+    const datePipe = new DatePipe('en-Us');
+    let endDate = datePipe.transform(event.target.value, 'yyyy-MM-dd');
+    let date = new Date(datePipe.transform(this.trfForm.controls['startDate'].value, 'yyyy-MM-dd') || "");
+    date.setDate(date.getDate() +  Number(this.trfForm.controls['duration'].value));
+    let startDate = datePipe.transform(date, 'yyyy-MM-dd');
+    if (formatDate(endDate || "", 'yyyy-MM-dd', 'en_US') >= formatDate(startDate || "", 'yyyy-MM-dd', 'en_US')) {
+      console.log('---endDate is greater----');
+    }
+    else {
+      this.trfForm.controls['endDate'].setValue(null);
+      this.toastrService.warning('Minimum duration should be '+this.trfForm.controls['duration'].value+' days', 'Warning', {
+        timeOut: 3000,
+      });
+    }
   }
 
   onGridReady(params: GridReadyEvent) {
@@ -150,17 +178,17 @@ export class CreateTrfComponent implements OnInit, AfterViewChecked {
     reader.readAsBinaryString(file);
   };
 
-  exportToExcel (element: any): void {
+  exportToExcel(element: any): void {
     // generate workbook and add the worksheet
     const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(element);
-    const workbook: XLSX.WorkBook = XLSX.utils.book_new(); 
+    const workbook: XLSX.WorkBook = XLSX.utils.book_new();
     // save to file
     XLSX.utils.book_append_sheet(workbook, ws, 'Sheet1');
-    XLSX.writeFile(workbook, 'associates-' + new Date().getTime() + '.xlsx'); 
+    XLSX.writeFile(workbook, 'associates-' + new Date().getTime() + '.xlsx');
   }
 
   downloadAssociate() {
-    let rowData :any[] = [];
+    let rowData: any[] = [];
     this.gridApi.forEachNode((node: { data: any; }) => rowData.push(node.data));
     this.exportToExcel(rowData);
   }
@@ -181,14 +209,14 @@ export class CreateTrfComponent implements OnInit, AfterViewChecked {
       });
       return;
     }
-    if(this.mode === "edit"){
+    if (this.mode === "edit") {
       this.updateTrf();
-    }else {
+    } else {
       this.createTrf();
     }
   }
 
-  createTrf(){
+  createTrf() {
     this.trfService.submit(this.trfForm, this.associateList).subscribe(res => {
       if (res) {
         this.toastrService.success('Request Created Successfully!', 'Success');
@@ -197,15 +225,15 @@ export class CreateTrfComponent implements OnInit, AfterViewChecked {
 
       }
     },
-    err => {
-      this.toastrService.error('An error has occured, Please try again!', 'Error', {
-        timeOut: 3000,
+      err => {
+        this.toastrService.error('An error has occured, Please try again!', 'Error', {
+          timeOut: 3000,
+        });
       });
-    }); 
   }
 
-  updateTrf(){
-    this.trfService.updateByTrfId(this.trfId, this.trfForm, this.associateList, ).subscribe(res => {
+  updateTrf() {
+    this.trfService.updateByTrfId(this.trfId, this.trfForm, this.associateList,).subscribe(res => {
       if (res) {
         this.toastrService.success('Request Updated Successfully!', 'Success');
         this.router.navigateByUrl('/private/trf');
@@ -213,10 +241,10 @@ export class CreateTrfComponent implements OnInit, AfterViewChecked {
 
       }
     },
-    err => {
-      this.toastrService.error('An error has occured, Please try again!', 'Error', {
-        timeOut: 3000,
+      err => {
+        this.toastrService.error('An error has occured, Please try again!', 'Error', {
+          timeOut: 3000,
+        });
       });
-    }); 
   }
 }

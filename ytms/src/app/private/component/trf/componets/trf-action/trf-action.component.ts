@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { TrfService } from '../../service/trf.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth-guard/auth.service';
 
 @Component({
   selector: 'app-trf-action',
@@ -9,15 +10,22 @@ import { Router } from '@angular/router';
 })
 export class TrfActionComponent implements OnInit {
 
+  user!:any;
   params: any;
-  
-  constructor(private router: Router, private trfService: TrfService) { }
+  isEditShow: boolean = false;
+ 
+ constructor(private router: Router, private trfService: TrfService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    
   }
 
   agInit(params: any): void {
       this.params = params;
+      this.user = this.authService.getLoginUserDetails();
+      if(this.params.data?.createdBy === this.user?.email && params.data?.status === 'PENDING'){
+        this.isEditShow = true;
+      }
   }
 
   viewTrf(){

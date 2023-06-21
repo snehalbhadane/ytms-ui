@@ -10,14 +10,34 @@ export class AuthGuard implements CanActivate {
 
   constructor(private authService: AuthService, private router: Router) {
   }
-  canActivate(): boolean {
+  
+  // canActivate(): boolean {
+  //   if(this.authService.isAuthenticated()){
+  //     return true;
+  //   }else {
+  //     this.router.navigate(['/public']);
+  //     return false;
+  //   }
+  // }
 
-    if(this.authService.isAuthenticated()){
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    if (this.authService.isAuthenticated()) {
+      const user = this.authService.getLoginUserDetails();
+      if (user) {
+        // check if route is restricted by role
+        if (route.data['roles'] && route.data['roles'].indexOf(user.role.roleName) === -1) {
+          // role not authorised so redirect to home page
+          this.router.navigate(['/private']);
+          return false;
+        }
+        // authorised so return true
+        return true;
+      }
       return true;
-    }else {
+    } else {
       this.router.navigate(['/public']);
       return false;
     }
   }
-  
+
 }

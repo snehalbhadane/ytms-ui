@@ -71,7 +71,7 @@
 
                 <div class="col">
                     <label style="font-size: small; margin-bottom: 0rem;">Start Date</label>
-                    <input type="date" formControlName="startDate" class="form-control">
+                    <input type="date" [min]="minStartDate" (change)="onStartDateChange($event)" formControlName="startDate" class="form-control">
                     <div class="invalid-feedback"
                         *ngIf="this.trfForm.get('startDate')?.touched && this.trfForm.get('startDate')?.hasError('required')">
                         Start Date is required
@@ -80,7 +80,7 @@
 
                 <div class="col">
                     <label style="font-size: small; margin-bottom: 0rem;">End Date</label>
-                    <input type="date" formControlName="endDate" class="form-control">
+                    <input type="date" [min]="minEndDate" (change)="onEndDateChange($event)" formControlName="endDate" class="form-control">
                     <div class="invalid-feedback"
                         *ngIf="this.trfForm.get('endDate')?.touched && this.trfForm.get('endDate')?.hasError('required')">
                         End Date is required

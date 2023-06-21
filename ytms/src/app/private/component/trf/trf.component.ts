@@ -26,6 +26,7 @@ export class TrfComponent implements OnInit {
     { headerName: 'Skills to be imparted', field: "skillToBeImpartent" },
     { headerName: 'Start Date', field: "startDate", width: 150 },
     { headerName: 'End Date', field: "endDate", width: 150 },
+    { headerName: 'CreatedBy', field: "createdBy", width: 200},
     // {
     //   headerName: 'Action', field: "", pinned: 'right', width: 80, cellRenderer: function () {
     //     return '<i class="fa fa-ellipsis-v" aria-hidden="true" style="color: #293e40;"></i>'
@@ -44,10 +45,8 @@ export class TrfComponent implements OnInit {
   public gridOptions : GridOptions = {
     columnDefs: this.columnDefs,
     rowSelection: 'single',
-    // onRowClicked: event => console.log('A row was clicked'),
     onColumnResized: event => console.log('A column was resized'),
     onGridReady: event => console.log('The grid is now ready'),
-    // getRowHeight: (params) => 100
   }
 
   constructor(private router: Router, private trfService: TrfService) { }
@@ -66,7 +65,6 @@ export class TrfComponent implements OnInit {
         }
       );  
   }
-
   createTrf() {
     this.router.navigateByUrl('/private/trf/create');
   }

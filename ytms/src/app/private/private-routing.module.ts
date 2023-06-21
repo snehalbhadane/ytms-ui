@@ -8,20 +8,21 @@ import { ViewtrfComponent } from './component/trf/componets/viewtrf/viewtrf.comp
 import { TrainerComponent } from './component/trainer/trainer.component';
 import { TrainingComponent } from './component/training/training.component';
 import { TrainingsummaryComponent } from './component/trainingsummary/trainingsummary.component';
+import { AuthGuard } from '../auth-guard/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: PrivateComponent,
     children: [
-      { path: '', redirectTo: 'trf', pathMatch: 'full' },
-      { path: 'trf', component: TrfComponent },
-      { path: 'trf/create', component: CreateTrfComponent },
-      { path: 'trf/view', component: ViewtrfComponent },
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'trainer', component: TrainerComponent },
-      { path: 'training', component: TrainingComponent },
-      { path: 'summary', component: TrainingsummaryComponent }
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+      { path: 'trf', component: TrfComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_USER"] } },
+      { path: 'trf/create', component: CreateTrfComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_USER"] } },
+      { path: 'trf/view', component: ViewtrfComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_USER"] } },
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_USER","ROLE_ADMIN"] }  },
+      { path: 'trainer', component: TrainerComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_ADMIN"] }  },
+      { path: 'training', component: TrainingComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_ADMIN"] }  },
+      { path: 'summary', component: TrainingsummaryComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_ADMIN"] } }
     ]
   },
 ];
