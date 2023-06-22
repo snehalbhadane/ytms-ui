@@ -49,7 +49,29 @@ input[type="color"]:focus,
   outline: 0 none;
 }
 
+.form {
+    position: relative;
+}
+.form .fa-search {
 
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #9ca3af;
+
+}
+.form-input {
+
+    /* height: 55px; */
+    text-indent: 33px;
+    border-radius: 10px;
+}
+
+.form-input:focus {
+
+    box-shadow: none;
+    border: none;
+}
 
 
 

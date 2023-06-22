@@ -92,6 +92,16 @@
         <div class="card">
             <div class="card-header" style="justify-content: space-between; display: flex;">
                 <span style="font-weight: 700">Associates</span>
+
+                <div class="row height d-flex justify-content-center align-items-center" style="width: 60%;">
+                    <div class="col-md-6">
+                        <div class="form">
+                            <i class="fa fa-search"></i>
+                            <input type="text" class="form-control form-input" [(ngModel)]="searchValue" placeholder="Search...">
+                        </div>
+                    </div>
+                </div>
+
                 <div style="justify-content: space-between; display: flex; width: 3em;">
                     <div class="file">
                         <i (click)="downloadAssociate()" placement="bottom" ngbTooltip="Download Associate" style="cursor: pointer;" class="fa fa-download" aria-hidden="true"></i>
@@ -108,7 +118,7 @@
                 <ag-grid-angular style="height: calc(100vh - 63vh); width:100%;" class="ag-theme-alpine"
                     [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [rowData]="rowData"
                     [rowSelection]="'multiple'" [animateRows]="true" [gridOptions]="gridOptions"
-                    (gridReady)="onGridReady($event)"></ag-grid-angular>
+                    [quickFilterText]="searchValue" (gridReady)="onGridReady($event)"></ag-grid-angular>
             </div>
         </div>
     </div>

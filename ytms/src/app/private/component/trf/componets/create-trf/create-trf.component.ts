@@ -15,6 +15,7 @@ import { DatePipe, formatDate } from '@angular/common';
 })
 export class CreateTrfComponent implements OnInit, AfterViewChecked {
 
+  searchValue!:string;
   fileValue: any;
   associateList: any[] = [];
   mode: string = "create";
