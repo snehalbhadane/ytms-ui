@@ -10,7 +10,8 @@ export const environment = {
   getTrlList : "/trf/getAllTrf",
   createTrf : "/trf/create",
   getByTrfId : "/trf/getById",
-  updateTrf : "/trf/update"
+  updateTrf : "/trf/update",
+  logoutUrl : "/useraccess/logout",
 };
 
 /*

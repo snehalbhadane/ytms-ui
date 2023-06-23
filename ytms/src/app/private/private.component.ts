@@ -1,6 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth-guard/auth.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'private-root',
@@ -30,7 +32,7 @@ export class PrivateComponent {
 
   elementRef!: ElementRef;
 
-  constructor(elementRef: ElementRef, private router: Router, private authService: AuthService) { 
+  constructor(elementRef: ElementRef, private router: Router, private authService: AuthService, private http: HttpClient) { 
     console.log(elementRef);
     this.elementRef  =  elementRef;
   } 
@@ -76,7 +78,13 @@ export class PrivateComponent {
     }
 
     logOut(){
-      this.authService.removeToken();
-      this.router.navigateByUrl('/public');
+      this.signOut().subscribe((res:any)=>{
+          this.authService.removeToken();
+          this.router.navigateByUrl('/public');
+      });
+    }
+
+    signOut() {
+      return this.http.get<any>(environment.baseUrl + environment.logoutUrl);
     }
 }
