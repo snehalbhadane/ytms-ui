@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>YTMS Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+     <style>
+        
+        :root {
+            --header-height: 3rem;
+            --nav-width: 68px;
+            --first-color: #4723D9;
+            --first-color-light: #AFA5D9;
+            --white-color: #F7F6FB;
+            --body-font: 'Nunito', sans-serif;
+            --normal-font-size: 1rem;
+            --z-fixed: 100
+        }
+
+        *,
+        ::before,
+        ::after {
+
+            box-sizing: border-box
+        }
+
+        body {
+            position: relative;
+            margin: var(--header-height) 0 0 0;
+            padding: 0 1rem;
+            font-family: var(--body-font);
+            font-size: var(--normal-font-size);
+            transition: .5s;
+            overflow: hidden;
+            background: rgba(203, 203, 210, .15);
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        .header {
+
+            width: 100%;
+            height: var(--header-height);
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* justify-content: flex-end; */
+            padding: 0 1rem;
+            background-color: var(--white-color);
+            z-index: var(--z-fixed);
+            transition: .5s
+        }
+
+        .header_toggle {
+
+            color: var(--white-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: -0.7em;
+        }
+
+        .header_img {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            border-radius: 50%;
+            overflow: hidden
+        }
+
+        .header_img img {
+            width: 30px;
+        }
+
+        .l-navbar {
+            position: fixed;
+            top: 0;
+            left: -30%;
+            width: var(--nav-width);
+            height: 100vh;
+            background-color: var(--first-color);
+            padding: .5rem 1rem 0 0;
+            transition: .5s;
+            z-index: var(--z-fixed)
+        }
+
+        .nav {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden
+        }
+
+        .nav_logo,
+        .nav_link,
+        .dropdown-btn {
+            display: grid;
+            grid-template-columns: max-content max-content;
+            align-items: center;
+            column-gap: 1rem;
+            padding: .5rem 0 .5rem 1.5rem
+        }
+
+        .nav_logo {
+            margin-bottom: 2rem
+        }
+
+        .nav_logo-icon {
+            font-size: 1.25rem;
+            color: var(--white-color)
+        }
+
+        .nav_logo-name {
+            color: var(--white-color);
+            font-weight: 700
+        }
+
+        .nav_link,
+        .dropdown-btn {
+            position: relative;
+            color: var(--white-color);
+            margin-bottom: 1.5rem;
+            transition: .3s
+        }
+
+        .dropdown-container {
+            display: none;
+            position: absolute;
+            background-color: var(--white-color);
+            min-width: 120px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-container a {
+            color: var(--first-color-light);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .nav_link:hover,
+        .dropdown-btn:hover,
+        .dropdown-container:hover {
+            color: var(--first-color-light)
+        }
+
+        .nav_link:hover {
+            color: var(--first-color-light)
+        }
+
+        .nav_icon {
+            font-size: 1.25rem
+        }
+
+        .show {
+            left: 0
+        }
+
+        .body-pd {
+            padding-left: calc(var(--nav-width) + 1rem)
+        }
+
+        .active {
+            color: var(--first-color-light)
+        }
+
+        .active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 2px;
+            height: 32px;
+            background-color: var(--white-color)
+        }
+
+        .height-100 {
+            height: calc(100vh - 27vh);
+        }
+
+        @media screen and (min-width: 768px) {
+            body {
+                margin: calc(var(--header-height) + 1.5rem) 0 0 0;
+                padding-left: calc(var(--nav-width) + 1rem)
+            }
+
+            .header {
+                height: calc(var(--header-height) + 0.5rem);
+                padding: 0 2rem 0 calc(var(--nav-width) + 2rem)
+            }
+
+            .header_img {
+                margin-top: 0.2em;
+                width: 30px;
+                height: 30px
+            }
+
+            .header_img img {
+                width: 30px
+            }
+
+            .l-navbar {
+                left: 0;
+                padding: 1rem 1rem 0 0
+            }
+
+            .show {
+                width: calc(var(--nav-width) + 156px)
+            }
+
+            .body-pd {
+                padding-left: calc(var(--nav-width) + 188px)
+            }
+        }
+
+        .completed {
+            height: 15px;
+            width: 15px;
+            background-color: green;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 1%;
+        }
+
+        .pending {
+            height: 15px;
+            width: 15px;
+            background-color: #ADD8E6;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 1%;
+        }
+
+        .inprogress {
+            height: 15px;
+            width: 15px;
+            background-color: Grey;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 1%;
+        }
+
+        .useTool:hover {
+            color: var(--first-color-light);
+        }
+
+        body {
+
+            margin: 0;
+
+        }
+
+        /* Adding scroll snap type mandatory
+
+        and scroll direction to y axis*/
+
+        .container {
+
+            scroll-snap-type: y mandatory;
+
+            overflow-y: scroll;
+
+            /* 100% height of the viewport */
+
+            height: 100vh;
+
+        }
+
+        button {
+            display: inline-block;
+            background-color: #1d32d8;
+            padding: 20px;
+            width: 200px;
+            color: #ffffff;
+            text-align: center;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+
+            const showNavbar = (toggleId, navId, bodyId, headerId) => {
+                const toggle = document.getElementById(toggleId),
+                    nav = document.getElementById(navId),
+                    bodypd = document.getElementById(bodyId),
+                    headerpd = document.getElementById(headerId)
+
+                // Validate that all variables exist
+                if (toggle && nav && bodypd && headerpd) {
+                    toggle.addEventListener('click', () => {
+                        // show navbar
+                        nav.classList.toggle('show')
+                        // change icon
+                        toggle.classList.toggle('bx-x')
+                        // add padding to body
+                        bodypd.classList.toggle('body-pd')
+                        // add padding to header
+                        headerpd.classList.toggle('body-pd')
+                    });
+                }
+            }
+
+            showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+
+            /*===== LINK ACTIVE =====*/
+            const linkColor = document.querySelectorAll('.nav_link')
+
+            function colorLink() {
+                if (linkColor) {
+                    linkColor.forEach(l => l.classList.remove('active'))
+                    this.classList.add('active')
+                }
+            }
+            linkColor.forEach(l => l.addEventListener('click', colorLink))
+
+            // Your code to run since DOM is loaded and ready
+        });
+    </script>
+</head>
+
+<body>
+
+    <body id="body-pd">
+        <header class="header" id="header" style="border-bottom: 5px solid #5a7f71; background-color : #293e40;">
+            <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+            <div id="tool" style="justify-content: flex-end; display: flex; padding-top: 0.4em;">
+                <div style="justify-content: space-between; display: flex;">
+                    <div style="padding: 0.4em;"><span style="color: white;">Kalyani Shinde</span></div>
+                </div>
+                <div class="header_toggle" style="margin-left: 0em;"><i style="font-size: 1.2em;margin-top: 0.2em;"
+                        class="bx bx-help-circle nav_icon useTool" aria-hidden="true"></i></div>
+                <div class="header_toggle" style="margin-left: 0em;"><i style="font-size: 1.2em;margin-top: 0.2em;"
+                        class="bx bx-cog nav_icon useTool" aria-hidden="true"></i></div>
+            </div>
+        </header>
+        <div class="l-navbar" id="nav-bar" style="background-color : #293e40;">
+            <nav class="nav">
+                <div>
+                    <a href="#" class="nav_logo">
+                        <i class='bx bx-layer nav_logo-icon'></i>
+                        <span class="nav_logo-name">YTMS</span>
+                    </a>
+                    <div class="nav_list">
+                        <a href="#" class="nav_link "> <i class='bx bx-grid-alt nav_icon'></i><span
+                                class="nav_name">Dashboard</span> </a>
+                        <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span
+                                class="nav_name">Training</span> </a>
+                        <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span
+                                class="nav_name"
+                                style="display: block;width: 150px;word-wrap: break-word;">TRF</span></a>
+
+                        <a   class="dropdown-btn"> <i class="bx bx-code nav_icon"></i> <span 
+                            class="nav_name">Trainer</span> </a>
+                        <div class="dropdown-container">
+                            <a href="./ytmsprofile.html">Trainer Profile</a><br>
+                            <a href="./ytms.html">Trainer Task</a><br>
+
+                        </div>
+                        <a href="#" class="nav_link"> <i class='bx bxs-report nav_icon'></i> <span
+                                class="nav_name">Training Summary</span> </a>
+                    </div>
+                </div>
+                <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
+                        class="nav_name">SignOut</span> </a>
+            </nav>
+        </div>
+        </head>
+
+        <body>
+            <div class="card">
+                <div class="card-header">
+                    <!-- <div style="justify-content: space-between; display: flex;"> -->
+
+                    <div class="container">
+                        <div class="row">
+                            <form>
+                                <div class="inline-form">
+                                    <h4>Trainer Profile</h4>
+                                </div>
+                                <div class="mb-3">
+
+                                    <label htmlFor="Trainer_Name">Trainer Name:</label>
+
+                                    <input type="text" class="form-control" id="Trainer_Name" placeholder="Trainer_Name"
+                                        name="Trainer_Name" required />
+
+                                    <div class="valid-feedback">Valid.</div>
+                                  </div>
+
+                                <div class="mb-3">
+
+                                    <label htmlFor="Trainer_ID">Trainer_ID:</label>
+
+                                    <input type="number" class="form-control" id="Trainer_ID" placeholder="Trainer_ID"
+                                        name="Trainer_ID" min="0" max="10000000000" required />
+
+                                    <div class="valid-feedback">Valid.</div>
+
+                                    <div class="invalid-feedback">Empty or invalid valid value (0-100 expected)</div>
+
+                                </div>
+                                <div class="mb-3">
+
+                                    <label htmlFor="User_ID">User_ID:</label>
+
+                                    <input type="number" class="form-control" id="User_ID" placeholder=" User_ID"
+                                        name="User_ID" min="0" max="10000000000" required />
+
+                                    <div class="valid-feedback">Valid.</div>
+
+                                    <div class="invalid-feedback">Empty or invalid valid value (0-100 expected)</div>
+
+                                </div>
+                                <div class="mb-3">
+
+                                    <label htmlFor="Current_location">Current_location:</label>
+
+                                    <input type="text" class="form-control" id="Current_location"
+                                        placeholder="Current_location" name="Current_location" required />
+
+                                    <div class="valid-feedback">Valid.</div>
+
+
+                                </div>
+                                <div class="mb-3">
+
+                                    <label htmlFor="Base_location">Base_location:</label>
+
+                                    <input type="text" class="form-control" id="Base_location"
+                                        placeholder="Base_location" name="Base_location" required />
+
+                                    <div class="valid-feedback">Valid.</div>
+
+
+                                </div>
+                                <div class="mb-3">
+
+                                    <label htmlFor="IRM">IRM:</label>
+
+                                    <input type="text" class="form-control" id="IRM" placeholder="IRM" name="IRM"
+                                        required />
+
+                                    <div class="valid-feedback">Valid.</div>
+
+
+                                </div>
+                                <div class="mb-3">
+
+                                    <label htmlFor="Type">Type:</label>
+                                    <input type="text" class="form-control" id="Type" placeholder="Type" name="Type"
+                                        required />
+
+                                    <div class="valid-feedback">Valid.</div>
+
+
+
+                                </div>
+                                <div class="mb-3">
+
+                                    <label htmlFor="Total_Experience">Total_Experience:</label>
+
+                                    <input type="number" class="form-control" id="Total_Experience"
+                                        placeholder="Total_Experience" name="Total_Experience" min="0" max="100"
+                                        required />
+
+                                    <div class="valid-feedback">Valid.</div>
+
+                                    <div class="invalid-feedback">Empty or invalid valid value (0-100 expected)</div>
+
+                                </div>
+                                <div class="mb-3">
+
+                                    <label htmlFor="Created_on">Created_on:</label>
+
+                                    <input type="date" class="form-control" id="Created_on" placeholder="Created_on"
+                                        name="Created_on" required />
+                                    <div class="valid-feedback">Valid.</div>
+
+                                    <div class="invalid-feedback">Empty or invalid valid value </div>
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label htmlFor="Updated_on">Updated_on:</label>
+
+                                    <input type="date" class="form-control" id="Updated_on" placeholder="Updated_on"
+                                        name="Updated_on" required />
+
+                                    <div class="valid-feedback">Valid.</div>
+
+                                    <div class="invalid-feedback">Empty or invalid valid value </div>
+
+                                </div>
+                                <button>Add </button>
+                                <button>Update</button>
+                                <button>Delete</button>
+
+                                
+
+                </body>
+        <script>
+            let dropdown = document.getElementsByClassName("dropdown-btn");
+            let i;
+            for (i = 0; i < dropdown.length; i++) {
+                dropdown[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    let dropdownContent = this.nextElementSibling;
+                    if (dropdownContent.style.display === "block") {
+                        dropdownContent.style.display = "none";
+                    } else {
+                        dropdownContent.style.display = "block";
+                    }
+                });
+            }
+        </script>
+
+    </body>
+
+</html>
