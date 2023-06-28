@@ -11,7 +11,7 @@ export const environment = {
   createTrf : "/trf/create",
   getByTrfId : "/trf/getById",
   updateTrf : "/trf/update",
-  logoutUrl : "/useraccess/logout",
+  logoutUrl : "/useraccess/logout"
 };
 
 /*
