@@ -171,7 +171,6 @@ export class CreateTrfComponent implements OnInit, AfterViewChecked {
       }).bind(this), this);
       this.associateList = jsonObj;
       this.gridOptions.api?.setRowData(jsonObj);
-
     };
     reader.onerror = function (ex) {
       console.log(ex);
@@ -210,6 +209,16 @@ export class CreateTrfComponent implements OnInit, AfterViewChecked {
       });
       return;
     }
+
+    let noOfParticipants = this.trfForm.value['noOfParticipants'];
+    // @ts-ignore: Object is possibly 'null'.
+    if(this.associateList.length != noOfParticipants){
+      this.toastrService.warning('Associates list must be equals to the no. of participants!', 'Warning', {
+        timeOut: 3000,
+      });
+      return;
+    }
+
     if (this.mode === "edit") {
       this.updateTrf();
     } else {
