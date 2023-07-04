@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dreyfus Report</title>
+    <link rel="icon" type="image/x-icon" href="/images/download.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css">
+    <link rel="stylesheet" href="./css/home.css"/>
+    <link rel="stylesheet" href="./css/dreyfus.css"/>
+  
+   
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+
+            const showNavbar = (toggleId, navId, bodyId, headerId) => {
+                const toggle = document.getElementById(toggleId),
+                    nav = document.getElementById(navId),
+                    bodypd = document.getElementById(bodyId),
+                    headerpd = document.getElementById(headerId)
+
+                // Validate that all variables exist
+                if (toggle && nav && bodypd && headerpd) {
+                    toggle.addEventListener('click', () => {
+                        // show navbar
+                        nav.classList.toggle('show')
+                        // change icon
+                        toggle.classList.toggle('bx-x')
+                        // add padding to body
+                        bodypd.classList.toggle('body-pd')
+                        // add padding to header
+                        headerpd.classList.toggle('body-pd')
+                    });
+                }
+            }
+
+            showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+
+            /*===== LINK ACTIVE =====*/
+            const linkColor = document.querySelectorAll('.nav_link')
+
+            function colorLink() {
+                if (linkColor) {
+                    linkColor.forEach(l => l.classList.remove('active'))
+                    this.classList.add('active')
+                }
+            }
+            linkColor.forEach(l => l.addEventListener('click', colorLink))
+
+            // Your code to run since DOM is loaded and ready
+        });
+    </script>
+</head>
+
+<body>
+    <body id="body-pd">
+        <header class="header" id="header" style="border-bottom: 5px solid #5a7f71; background-color : #293e40;">
+            <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+            <div id="tool" style="justify-content: flex-end; display: flex; padding-top: 0.4em;">
+                <div style="justify-content: space-between; display: flex;">
+                    <div class="header_img"> <img src="/images/download.jpg" alt=""> </div>
+                    <div style="padding: 0.4em;"><span style="color: white;">Pandurang Karmure</span></div>
+                </div>
+                <div class="header_toggle" style="margin-left: 0em;"><i style="font-size: 1.2em;margin-top: 0.2em;"
+                        class="bx bx-help-circle nav_icon useTool" aria-hidden="true"></i></div>
+                <div class="header_toggle" style="margin-left: 0em;"><i style="font-size: 1.2em;margin-top: 0.2em;"
+                        class="bx bx-cog nav_icon useTool" aria-hidden="true"></i></div>
+            </div>
+        </header>
+        <div class="l-navbar" id="nav-bar" style="background-color : #293e40;">
+            <nav class="nav">
+                <div>
+                    <a href="#" class="nav_logo">
+                        <i class='bx bx-layer nav_logo-icon'></i>
+                        <span class="nav_logo-name">YTMS</span>
+                    </a>
+                    <div class="nav_list"> 
+                        <a href="#" class="nav_link "> <i class='bx bx-grid-alt nav_icon'></i><span class="nav_name">Dashboard</span> </a> 
+                        <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Trainer</span> </a> 
+                        <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name" style="display: block;width: 150px;word-wrap: break-word;">TRF</span></a> 
+                         <a class="dropdown-btn"> <i class="bx bx-code nav_icon"></i> <span class="nav_name"> Training</span> </a> 
+                        <div class="dropdown-container">
+                        <a href="/trainingplan.html">Training Planning</a><br>
+                        <a href="/daily_progress_report.html">Daily Progress Report</a><br>
+                        <a href="/dreyfusReport.html">Dreyfus Report</a><br>
+                        <a href="/performanceReport.html">Training Performance Report</a><br>
+                        <a href="/baseline.html">Baseline Report</a> <br>
+                        </div>
+                         <a href="#" class="nav_link"> <i class='bx bxs-report nav_icon'></i> <span class="nav_name">Training Summary</span> </a>
+                    </div>
+                </div>
+                <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
+                        class="nav_name">SignOut</span> </a>
+            </nav>
+        </div>
+        <div class="card"> 
+            <div class="card-header">
+                <div style="justify-content: space-between; display: flex;">
+                    <h4>Dreyfus Report</h4>
+                    <i class='bx bx-plus-circle'
+                        style="color: #293e40;cursor: pointer;font-size: 1.5rem; padding-top: 0.5%;padding-right: 2%;"></i>   
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-75">
+                    <div class="container">
+                    <form >
+                       
+                        <div class="row">
+                          <div class="col-50">
+                            <label for="emp_id"><i class="fa fa-podcast"></i> Employee ID:</label>
+                            <input type="number" name="emp_id" id="emp_id" placeholder="Enter the employee id" required>
+                        
+                            <label for="trainee_name"><i class="fa fa-user"></i> Trainee Name:</label>
+                            <input type="text" name="trainee_name" id="trainee_name" placeholder="Enter the trainee name" required/>
+                      
+                            <label for="inetrim_assesment"><i class="fa fa-file"></i> Inetrim Assesment:</label>
+                            <input list="rating" name="inetrim_assesment" id="inetrim_assesment" placeholder="Select inetrim assesment rating" required>
+                            <datalist id="rating">
+                                <option value="Below Expectation">
+                                <option value="Meet Expectation">
+                                <option value="Exceeds Expectations">
+                                <option value="Unsatisfactory">
+                                <option value="Average">
+                                <option value="Outstanding">
+                            </datalist>
+                
+                            <label for="capstone"><i class="fa fa-file"></i> Final Capstone Project:</label>
+                            <input list="rating" name="capstone" id="capstone" placeholder="Select Final Capstone Project rating" required>
+                            <datalist id="rating">
+                                <option value="Below Expectation">
+                                <option value="Meet Expectation">
+                                <option value="Exceeds Expectations">
+                                <option value="Unsatisfactory">
+                                <option value="Average">
+                                <option value="Outstanding">
+                            </datalist>
+                
+                            <label for="sme"><i class="fa fa-edit"></i> Overall SME Feedback:</label>
+                            <input list="rating" name="sme" id="sme" placeholder="Select Overall SME Feedback rating" required>
+                            <datalist id="rating">
+                                <option value="Below Expectation">
+                                <option value="Meet Expectation">
+                                <option value="Exceeds Expectations">
+                                <option value="Unsatisfactory">
+                                <option value="Average">
+                                <option value="Outstanding">
+                            </datalist>   
+                          </div>
+                          
+                          <div class="col-50">                       
+                            <label for="skills"><i class="fa fa-puzzle-piece"></i> Comman Skills:</label>
+                            <input list="rating" name="skills" id="skills" placeholder="Select common skills rating" required>
+                            <datalist id="rating">
+                                <option value="Below Expectation">
+                                <option value="Meet Expectation">
+                                <option value="Exceeds Expectations">
+                                <option value="Unsatisfactory">
+                                <option value="Average">
+                                <option value="Outstanding">
+                            </datalist>
+                        
+                            <label for="attitude"><i class="fa fa-user-secret"></i> Attitude:</label>
+                            <input list="rating" name="attitude" id="attitude" placeholder="Select attitude rating" required>
+                            <datalist id="rating">
+                                <option value="Below Expectation">
+                                <option value="Meet Expectation">
+                                <option value="Exceeds Expectations">
+                                <option value="Unsatisfactory">
+                                <option value="Average">
+                                <option value="Outstanding">
+                            </datalist>
+                
+                            <label  for="overall"><i class="fa fa-sliders"></i> Overall Score:</label>
+                            <input list="rating" name="overall" id="overall" placeholder="Select overall score rating" required>
+                            <datalist id="rating">
+                                <option value="Below Expectation">
+                                <option value="Meet Expectation">
+                                <option value="Exceeds Expectations">
+                                <option value="Unsatisfactory">
+                                <option value="Average">
+                                <option value="Outstanding">
+                            </datalist>
+
+                            <label for="competency"><i class="fa fa-hourglass-half"></i> Final Dreyfus Competency:</label>
+                            <input list="competencys" name="competency" id="competency" placeholder="Select the Final Dreyfus Competency" required>
+                            <datalist id="competencys">
+                                <option value="Java competency">
+                                <option value="Python competency">
+                                <option value="AI-ML competency">
+                                <option value="TCI competency">
+                                <option value="Dot Net competency">
+                            </datalist>
+                            
+                            <label for="remark"><i class="fa fa-edit"></i> Remarks:</label>
+                            <input type="text" name="remark" id="remark" placeholder="Remark" required/>
+                          </div>   
+                        </div>
+                        <!-- <div class="btn-block">
+                          <hr> <button type="button" class="btn btn-primary" onclick="submit()">Submit</button>
+                        </div>  -->
+                        <div class="btn-block">
+                            <hr> <button type="submit" href="/">Submit</button>
+                        </div>     
+                    </form>
+
+                    </div>
+                    
+                </div> 
+            <!-- </div> <div id="arrays" style="margin-bottom: 100px;"></div> -->
+        </div> 
+    </div>
+    </body>
+
+    <script>
+        let dropdown = document.getElementsByClassName("dropdown-btn");
+        let j;
+        for (j = 0; j < dropdown.length; j++) {
+             dropdown[j].addEventListener("click", function() {
+            this.classList.toggle("active");
+            let dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+             dropdownContent.style.display = "none";
+        } else {
+            dropdownContent.style.display = "block";
+        }
+        });
+        }
+
+        // let trainees = [];
+        //         let i = 0;
+        //         let update = -1;
+        //     function submit()
+          
+        //     {
+        //     let empid = document.getElementById("emp_id").value;
+        //     let trainee_name = document.getElementById("trainee_name").value;
+        //     let inetrim_assesment = parseFloat(document.getElementById("inetrim_assesment").value);
+        //     let capstone_project = parseFloat(document.getElementById("capstone").value);
+        //     let sme_feedback = parseFloat(document.getElementById("sme").value);
+        //     let skills = parseFloat(document.getElementById("skills").value);
+        //     let attitude = parseFloat(document.getElementById("attitude").value);
+        //     let overall = parseFloat(document.getElementById("overall").value);
+        //     let competency = parseFloat(document.getElementById("competency").value);
+        //     let remark = parseFloat(document.getElementById("remark").value);
+        //     i++;
+          
+        //     let trainee = {
+        //         "id":i,
+        //         "emp_id":empid,
+        //         "trainee_name":trainee_name,
+        //         "inetrim_assesment":inetrim_assesment,        
+        //         "capstone":capstone_project,
+        //         "sme":sme_feedback,
+        //         "skills":skills,
+        //         "attitude":attitude,
+        //         "overall":overall,
+        //         "competency":competency,
+        //         "remark":remark
+        //     }
+          
+        //     if(update == -1){
+        //         trainees.push(trainee);
+        //     }else{
+        //         trainee.id = update+1;
+        //         trainees[update] = trainee;
+        //         update = -1;
+        //     }
+        //     showArray();
+        //     }
+          
+        //     showArray = () => {
+        //     let showTrainees =
+        //       "<table class='table table-striped'>" +
+        //       "<thead>" +
+        //       "<tr>" +
+        //       "<th>Sr.No.</th>" +
+        //       "<th>Employee ID</th>" +
+        //       "<th>Trainee Name</th>" +
+        //       "<th>Inetrim Assesment</th>" +
+        //       "<th>Final Capstone Project</th>" +
+        //       "<th>Overall SME Feedback</th>" +
+        //       "<th>Comman Skills</th>" +
+        //       "<th>Attitude</th>" +
+        //       "<th>Overall Score</th>" +
+        //       "<th>Final Dreyfus Competency</th>" +
+        //       "<th>Remarks</th>" +
+        //       "<th>Action</th>" +
+        //       "</tr>" +
+        //       "</thead><tbody>";
+          
+        //     for (i = 0; i < trainees.length; i++) {
+        //         showTrainees += `
+        //                         <tr>
+        //                             <td>${trainees[i].id}</td>
+        //                             <td>${trainees[i].empid}</td>
+        //                             <td>${trainees[i].trainee_name}</td>
+        //                             <td>${trainees[i].inetrim_assesment}</td>
+        //                             <td>${trainees[i].capstone_project}</td>
+        //                             <td>${trainees[i].sme_feedback}</td>
+        //                             <td>${trainees[i].skills}</td>
+        //                             <td>${trainees[i].attitude}</td>
+        //                             <td>${trainees[i].overall}</td>
+        //                             <td>${trainees[i].competency}</td>
+        //                             <td>${trainees[i].remark}</td> 
+        //                             <td>
+        //                             <button type="button" class="btn btn-success" onclick="updateIt(${i})">Update</button>
+        //                                 <button type="button" class="btn btn-danger" onclick="deleteIt(${i})">Delete</button>
+        //                             </td>                                  
+        //                         </tr>`;
+        //     }
+        //     showTrainees += "</tbody></table>";
+        //     document.getElementById("arrays").innerHTML = showTrainees;
+        //     };
+
+        //     deleteIt = (i) => {
+        //         trainees.splice(i,1);
+        //     if(trainees.length != 0){
+        //         showArray();
+        //     }else{
+        //         document.getElementById("arrays").innerHTML = "";
+        //     }
+        //   }
+          
+        //   updateIt = (i) => {
+        //     document.getElementById("emp_id").value = trainees[i].empid;
+        //     document.getElementById("trainee_name").value = trainees[i].trainee_name;
+        //     document.getElementById("inetrim_assesment").value = trainees[i].inetrim_assesment;
+        //     document.getElementById("capstone").value = trainees[i].capstone_project;
+        //     document.getElementById("sme").value = trainees[i].sme_feedback;
+        //     document.getElementById("skills").value = trainees[i].skills;
+        //     document.getElementById("attitude").value = trainees[i].attitude;
+        //     document.getElementById("overall").value = trainees[i].overall;
+        //     document.getElementById("competency").value = trainees[i].competency;
+        //     document.getElementById("remark").value = trainees[i].remark;
+        //     update = i;
+        //   }
+          
+    </script>
+    
+</html>

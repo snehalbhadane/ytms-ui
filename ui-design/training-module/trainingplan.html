@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Training Planning</title>
+    <link rel="icon" type="image/x-icon" href="/images/download.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css">
+    <link rel="stylesheet" href="./css/new.css"/>
+    <link rel="stylesheet" href="./css/home.css"/> 
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+
+            const showNavbar = (toggleId, navId, bodyId, headerId) => {
+                const toggle = document.getElementById(toggleId),
+                    nav = document.getElementById(navId),
+                    bodypd = document.getElementById(bodyId),
+                    headerpd = document.getElementById(headerId)
+
+                // Validate that all variables exist
+                if (toggle && nav && bodypd && headerpd) {
+                    toggle.addEventListener('click', () => {
+                        // show navbar
+                        nav.classList.toggle('show')
+                        // change icon
+                        toggle.classList.toggle('bx-x')
+                        // add padding to body
+                        bodypd.classList.toggle('body-pd')
+                        // add padding to header
+                        headerpd.classList.toggle('body-pd')
+                    });
+                }
+            }
+            showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+            /*===== LINK ACTIVE =====*/
+            const linkColor = document.querySelectorAll('.nav_link')
+
+            function colorLink() {
+                if (linkColor) {
+                    linkColor.forEach(l => l.classList.remove('active'))
+                    this.classList.add('active')
+                }
+            }
+            linkColor.forEach(l => l.addEventListener('click', colorLink))
+
+            // Your code to run since DOM is loaded and ready
+        });
+    </script>
+</head>
+
+<body>
+    <body id="body-pd">
+        <header class="header" id="header" style="border-bottom: 5px solid #5a7f71; background-color : #293e40;">
+            <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+            <div id="tool" style="justify-content: flex-end; display: flex; padding-top: 0.4em;">
+                <div style="justify-content: space-between; display: flex;">
+                    <div class="header_img"> <img src="/images/download.jpg" alt=""> </div>
+                    <div style="padding: 0.4em;"><span style="color: white;">Pandurang Karmure</span></div>
+                </div>
+                <div class="header_toggle" style="margin-left: 0em;"><i style="font-size: 1.2em;margin-top: 0.2em;"
+                        class="bx bx-help-circle nav_icon useTool" aria-hidden="true"></i></div>
+                <div class="header_toggle" style="margin-left: 0em;"><i style="font-size: 1.2em;margin-top: 0.2em;"
+                        class="bx bx-cog nav_icon useTool" aria-hidden="true"></i></div>
+            </div>
+        </header>
+        <div class="l-navbar" id="nav-bar" style="background-color : #293e40;">
+            <nav class="nav">
+                <div>
+                    <a href="#" class="nav_logo">
+                        <i class='bx bx-layer nav_logo-icon'></i>
+                        <span class="nav_logo-name">YTMS</span>
+                    </a>
+                    <div class="nav_list"> 
+                        <a href="#" class="nav_link "> <i class='bx bx-grid-alt nav_icon'></i><span class="nav_name">Dashboard</span> </a> 
+                        <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Trainer</span> </a> 
+                        <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name" style="display: block;width: 150px;word-wrap: break-word;">TRF</span></a> 
+                         <a class="dropdown-btn"> <i class="bx bx-code nav_icon"></i> <span class="nav_name"> Training</span> </a> 
+                        <div class="dropdown-container">
+                        <a href="/trainingplan.html">Training Planning</a><br>
+                        <a href="/daily_progress_report.html">Daily Progress Report</a><br>
+                        <a href="/dreyfusReport.html">Dreyfus Report</a><br>
+                        <a href="/performanceReport.html">Training Performance Report</a><br>
+                        <a href="/baseline.html">Baseline Report</a> <br>
+                        </div>
+                         <a href="#" class="nav_link"> <i class='bx bxs-report nav_icon'></i> <span class="nav_name">Training Summary</span> </a>
+                    </div>
+                </div>
+                <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
+                        class="nav_name">SignOut</span> </a>
+            </nav>
+        </div>
+        <div class="card"> 
+                <div class="card-header">
+                    <div style="justify-content: space-between; display: flex;">
+                        <h4>Training Planning</h4>
+                        <i class='bx bx-plus-circle'
+                            style="color: #293e40;cursor: pointer;font-size: 1.5rem; padding-top: 0.5%;padding-right: 2%;"></i>   
+                    </div>
+                 </div>
+                 <div class="row">
+                  <div class="col-75">
+                      <div class="container">
+                        <form >
+                         
+                          <div class="row">
+                            <div class="col-50">
+                              <label for="training_name"><i class="fa fa-code"></i> Traning Name:</label>
+                              <input list="training" name="training_name" id="training_name" placeholder="Select the course" required>
+                                <datalist id="training">
+                                 <option value="java">
+                                 <option value="c">
+                                 <option value="C++">
+                                 <option value="Angular">
+                                 <option value="React">
+                                 </datalist>
+                          
+                              <label for="topic"><i class="fa fa-file-code-o"></i> Topic Coverage:</label>
+                              <input type="text" name="topic" id="topic" placeholder="Enter the topic" required/>
+                        
+                              <label for="content_cover"><i class="fa fa-file-text-o"></i> Content Coverage:</label>
+                              <input type="text" name="content_cover" id="content_cover" placeholder="Enter the content coverage" required/>
+                  
+                              <label for="extra_topic"><i class="fa fa-file-text-o"></i> Extra Content Coverage:</label>
+                              <input type="text" name="extra_topic" id="extra_topic" placeholder="Enter the extra topic covered"/>
+                  
+                              <label for="duration"><i class="fa fa-clock-o"></i> Training Duration:</label>
+                              <input list="training_duration" name="duration" id="duration" placeholder="Select duration" required>
+                                <datalist id="training_duration">
+                                 <option value="1 week">
+                                 <option value="2 week">
+                                 <option value="4 week">
+                                 <option value="6 week">
+                                 <option value="8 week">
+                                </datalist>
+                         
+                              <label for="start_date"><i class="fa fa-calendar"></i> Planned Start Date:</label>
+                              <input type="date" name="start_date" id="start_date" required/>
+                        
+                              <label for="end_date"><i class="fa fa-calendar"></i> Planned End Date:</label>
+                              <input type="date" name="end_date" id="end_date" required/>
+                              
+                            </div>
+                            <div class="col-50">
+                              <label for="act_start_date"><i class="fa fa-calendar"></i> Actual Start Date:</label>
+                              <input type="date" name="act_start_date" id="act_start_date" />
+                  
+                              <label for="act_end_date"><i class="fa fa-calendar"></i> Actual End Date:</label>
+                              <input type="date" name="act_end_date" id="act_end_date" />
+                          
+                              <label for="status"><i class="fa fa-hourglass-half"></i> Status:</label>
+                              <input list="training_status" name="status" id="status" placeholder="Select the status" required>
+                                <datalist id="training_status">
+                                 <option value="Active">
+                                 <option value="Inactive">
+                                 <option value="Hold">
+                                </datalist>
+                          
+                              <label for="remark"><i class="fa fa-edit"></i> Remark:</label>
+                              <input type="text" name="remark" id="remark" placeholder="Remark" required/>
+                  
+                              <label  for="trainer"><i class="fa fa-user-secret"></i> Trainer ID:</label>
+                              <input type="text" name="trainer" id="trainer" placeholder="Trainer ID" required/>
+                  
+                              <label for="associate"><i class="fa fa-user"></i> Associate ID:</label>
+                              <input type="text" name="associate" id="associate" placeholder="Associate Name" required/>
+                              
+                              <label for="user"><i class="fa fa-users"></i> User ID:</label>
+                              <input type="text" name="user" id="user" placeholder="Enter User Name" required/>
+                            </div>   
+                          </div>
+                          <div class="btn-block">
+                            <hr> <button type="submit" href="/">Submit</button>
+                            </div>      
+                        </form>
+                      </div>
+                    </div> 
+            </div> 
+       
+              </div>
+            </div>       
+            
+        </div>
+    </body>
+    <script>
+        let dropdown = document.getElementsByClassName("dropdown-btn");
+        let i;
+
+        for (i = 0; i < dropdown.length; i++) {
+             dropdown[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            let dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+             dropdownContent.style.display = "none";
+        } else {
+            dropdownContent.style.display = "block";
+        }
+        });
+        }      
+    </script>
+</html>

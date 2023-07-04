@@ -1,0 +1,68 @@
+.row {
+    display: -ms-flexbox; 
+    display: flex;
+    -ms-flex-wrap: wrap; 
+    flex-wrap: wrap;
+    margin: 0 -16px;
+  }
+  
+  .col-25 {
+    -ms-flex: 25%; 
+    flex: 25%;
+  }
+  
+  .col-50 {
+    -ms-flex: 50%; 
+    flex: 50%;
+  }
+  
+  .col-75 {
+    -ms-flex: 75%; 
+    flex: 75%;
+  }
+  
+  .col-25,
+  .col-50,
+  .col-75 {
+    padding: 0 16px;
+  }
+  
+  .container {
+    background-color: #f1f1f1;
+    padding: 30px 20px 10px 20px;
+    margin-top: 20px ;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 3px; 
+  }
+  input[type=text],[type="number"],[list="rating"],[list="competencys"] {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  label {
+    margin-bottom: 0px;
+    display: block;
+    
+  }
+ 
+  .btn-block {
+    text-align: center;
+    }
+    button {
+    width: 10%;
+    padding: 10px;
+    margin: 20px auto;
+    border-radius: 5px; 
+    border: none;
+    background: #1c87c9; 
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    }
+    button:hover {
+    background: #26a9e0;
+    }
