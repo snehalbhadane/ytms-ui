@@ -61,6 +61,9 @@
                   <div class="invalid-feedback"
                      *ngIf="this.registerForm.get('phoneNumber')?.touched && this.registerForm.get('phoneNumber')?.hasError('required')">
                      Phone Number is required</div>
+                  <div class="invalid-feedback"
+                     *ngIf="this.registerForm.get('phoneNumber')?.touched && this.registerForm.get('phoneNumber')?.hasError('pattern')">
+                     Invalide phone number</div>
                </div>
             </div>
             <div class="row">

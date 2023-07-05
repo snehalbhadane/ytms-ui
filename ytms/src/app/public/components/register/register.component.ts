@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
     empId: new FormControl(null, [Validators.required]),
     gender: new FormControl(null, [Validators.required]),
     birthday: new FormControl(null),
-    phoneNumber: new FormControl(null, [Validators.required]),
+    phoneNumber: new FormControl(null, [Validators.required, Validators.pattern("^[0-9_-]{10,12}")]),
   },
     // add custom Validators to the form, to make sure that password and passwordConfirm are equal
     { validators: CustomValidators.passwordsMatching }
