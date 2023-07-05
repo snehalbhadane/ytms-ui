@@ -22,7 +22,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut: 10000,
+      timeOut: 1000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),

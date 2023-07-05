@@ -76,16 +76,18 @@ export class RegisterComponent implements OnInit {
     this.apiService.register(user).
       subscribe(res => {
         if (Object.keys(res).length > 0) {
-          this.toastrService.success('Register Successfully!', 'Success');
-          this.router.navigate(['/public/login']);
+          if(res.hasOwnProperty('error')){
+            this.toastrService.warning(res.error, 'Warning');
+          }else {
+            this.toastrService.success('Register Successfully!', 'Success');
+            this.router.navigate(['/public/login']);
+          }
         } else {
 
         }
       },
       err => {
-        this.toastrService.error('An error has occured, Please try again!', 'Error', {
-          timeOut: 3000,
-        });
+        this.toastrService.error('An error has occured, Please try again!', 'Error');
       });
   }
 }

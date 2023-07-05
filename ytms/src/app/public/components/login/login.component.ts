@@ -37,13 +37,15 @@ export class LoginComponent implements OnInit {
           this.authService.storeToken(res.authToken, res.user);
           this.router.navigateByUrl('/private');
         }else {
-          this.toastrService.warning(res.message, 'Warning');
+          if(res.hasOwnProperty('error')){
+            this.toastrService.warning(res.error, 'Warning');
+          }else {
+            this.toastrService.warning(res.message, 'Warning');
+          }
         }
       },
         err => {
-          this.toastrService.error('An error has occured, Please try again!', 'Error', {
-            timeOut: 3000,
-          });
+          this.toastrService.error('An error has occured, Please try again!', 'Error');
           this.authService.removeToken();
         });
   }
