@@ -1,0 +1,96 @@
+/*
+ Ag-grid's default row hover and row selected colour have some transparency. But, since our action buttons column is placed absolutely over other columns, its background looks darker because of the way those transparent colours blend. So, it is better to use background colours with no transparency in this method.
+*/
+::ng-deep .ag-theme-alpine {
+    --ag-row-hover-color: hsl(207, 90%, 94%);
+    --ag-selected-row-background-color: hsl(207, 87%, 86%);
+}
+
+/* Hide right header and spacer */
+::ng-deep .ag-pinned-right-header,
+::ng-deep .ag-horizontal-right-spacer {
+    width: 0 !important;
+    min-width: 0 !important;
+}
+
+/* Add absolute position so that action buttons column will appear on top of other columns. pointer-events: none to pass on mousemove event to behind columns */
+::ng-deep .ag-pinned-right-cols-container {
+    position: absolute !important;
+    right: 0;
+    pointer-events: none;
+}
+
+/* Reset pointer-events so that click can happen on action buttons */
+::ng-deep .ag-pinned-right-cols-container * {
+    pointer-events: initial;
+}
+
+/* Hide border of right-cols-container */
+::ng-deep .ag-pinned-right-cols-container .ag-cell {
+    border: none !important;
+}
+
+/* Show action buttons only for row that is being hovered. For rows which are not being hovered, hide them by setting their width and padding to 0.*/
+::ng-deep .ag-pinned-right-cols-container .ag-row:not(.ag-row-hover),
+::ng-deep .ag-pinned-right-cols-container .ag-row:not(.ag-row-hover) .ag-cell {
+    width: 0 !important;
+    padding: 0 !important;
+}
+
+.form {
+
+    position: relative;
+}
+
+.form .fa-search {
+
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #9ca3af;
+
+}
+
+.form span {
+
+    position: absolute;
+    right: 17px;
+    top: 13px;
+    padding: 2px;
+    border-left: 1px solid #d1d5db;
+
+}
+
+.form-input {
+
+    /* height: 55px; */
+    text-indent: 33px;
+    border-radius: 10px;
+}
+
+.form-input:focus {
+
+    box-shadow: none;
+    border: none;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+    border-color: #293e40;
+    box-shadow: 0 0 0 #293e40 inset, 0 0 8px #293e40;
+    outline: 0 none;
+}

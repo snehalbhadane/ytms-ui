@@ -9,9 +9,9 @@ import { AuthService } from 'src/app/auth-guard/auth.service';
   providedIn: 'root'
 })
 export class TrfService {
-  user!:any;
+  user!: any;
   constructor(private http: HttpClient, private authService: AuthService) {
-    
+
   }
 
   // get trf list
@@ -34,7 +34,7 @@ export class TrfService {
       "noOfParticipants": form.value.noOfParticipants,
       "startDate": form.value.startDate,
       "endDate": form.value.endDate,
-      "createdBy" : this.user.email,
+      "createdBy": this.user.email,
       "associates": associateList
     }
     return this.http.post(environment.baseUrl + environment.createTrf, JSON.stringify(obj),
@@ -64,13 +64,18 @@ export class TrfService {
       "noOfParticipants": form.value.noOfParticipants,
       "startDate": form.value.startDate,
       "endDate": form.value.endDate,
-      "createdBy" : this.user.email,
+      "createdBy": this.user.email,
       "associates": associateList
     }
-    return this.http.put(environment.baseUrl + environment.updateTrf+"/"+id, JSON.stringify(obj),
+    return this.http.put(environment.baseUrl + environment.updateTrf + "/" + id, JSON.stringify(obj),
       {
         headers:
           { 'Content-Type': 'application/json' }
       });
+  }
+
+  // get trf list
+  getTrfListByStatus(): Observable<any> {
+    return this.http.get(environment.baseUrl + environment.getTrfByStatus + "?status=PENDING");
   }
 }

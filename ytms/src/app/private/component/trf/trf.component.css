@@ -94,3 +94,10 @@ input[type="color"]:focus,
     padding: 0 !important;
   }
   
+  .header-logo-image{
+    max-width: 150px;
+    max-height: 1.3rem;
+    cursor: pointer;
+    opacity: 1;
+    margin-top: 0.5em ;
+}

@@ -14,6 +14,7 @@ import { TrainerComponent } from './component/trainer/trainer.component';
 import { TrainingComponent } from './component/training/training.component';
 import { TrainingsummaryComponent } from './component/trainingsummary/trainingsummary.component';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { ViewTrainingRequestComponent } from './component/trf/componets/view-training-request/view-training-request.component';
 
 @NgModule({
   declarations: [
@@ -21,11 +22,11 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
     TrfComponent,
     DashboardComponent,
     CreateTrfComponent,
-    ViewtrfComponent,
     TrfActionComponent,
     TrainerComponent,
     TrainingComponent,
-    TrainingsummaryComponent
+    TrainingsummaryComponent,
+    ViewTrainingRequestComponent
   ],
   imports: [
     CommonModule,
