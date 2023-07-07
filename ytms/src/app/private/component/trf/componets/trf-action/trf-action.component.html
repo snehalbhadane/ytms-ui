@@ -13,6 +13,6 @@
 </div>
 
 <div style="display: flex; justify-content: space-around;    margin-top: 1em;" *ngIf="url === 'view-request'">
-    <i  class="fa fa-ban" aria-hidden="true" style="color: #293e40;cursor: pointer;font-size: large;" placement="left" ngbTooltip="Decline" (click) = "decline()"></i>
-    <i  class="fa fa-check-circle" aria-hidden="true" style="color: #293e40;cursor: pointer;font-size: large;" placement="right" ngbTooltip="Approved" (click) = "approved()"></i>
+    <i  class="fa fa-ban" aria-hidden="true" style="color: #293e40;cursor: pointer;font-size: large;" placement="right" ngbTooltip="Decline" (click) = "updateStatus('REJECTED')"></i>
+    <i  class="fa fa-check-circle" aria-hidden="true" style="color: #293e40;cursor: pointer;font-size: large;" placement="left" ngbTooltip="Approved" (click) = "updateStatus('APPROVED')"></i>
 </div>

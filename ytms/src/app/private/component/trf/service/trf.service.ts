@@ -78,4 +78,9 @@ export class TrfService {
   getTrfListByStatus(): Observable<any> {
     return this.http.get(environment.baseUrl + environment.getTrfByStatus + "?status=PENDING");
   }
+
+  // get trf status
+  updateTRFStatus(status: string, trfId: number): Observable<any> {
+    return this.http.get(environment.baseUrl + environment.updateTrfStatus + "?trfId=" + trfId + "&status=" + status);
+  }
 }

@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { TrfService } from '../../service/trf.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth-guard/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-trf-action',
@@ -14,7 +15,7 @@ export class TrfActionComponent implements OnInit {
   params: any;
   isEditShow: boolean = false;
   url! : string;
- constructor(private router: Router, private trfService: TrfService, private authService: AuthService) { }
+ constructor(private router: Router, private trfService: TrfService, private authService: AuthService,private toastrService: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -25,7 +26,7 @@ export class TrfActionComponent implements OnInit {
       this.params = params;
       this.user = this.authService.getLoginUserDetails();
       if(this.url === 'trf'){
-        if(this.params.data?.createdBy === this.user?.email && params.data?.status === 'PENDING'){
+        if(this.params.data?.createdBy === this.user?.email && (params.data?.status === 'PENDING' || params.data?.status === 'REJECTED')){
           this.isEditShow = true;
         }
       }
@@ -64,11 +65,18 @@ export class TrfActionComponent implements OnInit {
     ); 
   }
 
-  decline(){
-    console.log("declined");
-  }
-
-  approved(){
-    console.log("approved");
+  updateStatus(status: string){
+    this.trfService.updateTRFStatus(status,this.params.data.trfId)
+    .subscribe(
+      (data: Number) =>{
+         this.toastrService.success("Request "+status+" Successfully!", 'Success');
+         setTimeout(() => {
+          window.location.reload();
+         }, 1000);
+      },
+      (err:any) =>{
+        alert(err.error);
+      }
+    );
   }
 }

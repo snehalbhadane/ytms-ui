@@ -12,7 +12,8 @@ export const environment = {
   getByTrfId : "/trf/getById",
   updateTrf : "/trf/update",
   logoutUrl : "/useraccess/logout",
-  getTrfByStatus : "/trf/getTrfByStatus"
+  getTrfByStatus : "/trf/getTrfByStatus",
+  updateTrfStatus : "/trf/updateTrfStatus"
 };
 
 /*

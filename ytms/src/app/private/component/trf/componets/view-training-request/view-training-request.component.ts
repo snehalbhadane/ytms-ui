@@ -26,7 +26,7 @@ export class ViewTrainingRequestComponent implements OnInit {
     { headerName: 'Start Date', field: "startDate", width: 150 },
     { headerName: 'End Date', field: "endDate", width: 150 },
     { headerName: 'CreatedBy', field: "createdBy", width: 200 },
-    {headerName: 'Action', pinned: 'right', width: 100, cellRendererFramework: TrfActionComponent}
+    {headerName: 'Action', pinned: 'right', width: 130, cellRendererFramework: TrfActionComponent}
   ];
 
   rowData = [];
