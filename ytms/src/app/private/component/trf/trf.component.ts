@@ -14,7 +14,7 @@ export class TrfComponent implements OnInit {
 
   searchValue : any;
   columnDefs: ColDef[] = [
-    { headerName: 'Status', field: "status", pinned: 'left', width: 100,},
+    { headerName: 'Status', field: "status", pinned: 'left', width: 120,},
     { headerName: 'Training Title', field: "trainingTitle", pinned: 'left', width: 200, },
     { headerName: 'Training Type', field: "trainingType", width: 150 },
     { headerName: 'Project Name', field: "projectName" },

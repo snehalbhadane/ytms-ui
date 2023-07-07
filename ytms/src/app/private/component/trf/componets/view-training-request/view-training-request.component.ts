@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ColDef, GridOptions, GridReadyEvent } from 'ag-grid-community';
 import { TrfService } from '../../service/trf.service';
+import { TrfActionComponent } from '../trf-action/trf-action.component';
 
 @Component({
   selector: 'app-view-training-request',
@@ -25,14 +26,7 @@ export class ViewTrainingRequestComponent implements OnInit {
     { headerName: 'Start Date', field: "startDate", width: 150 },
     { headerName: 'End Date', field: "endDate", width: 150 },
     { headerName: 'CreatedBy', field: "createdBy", width: 200 },
-    {
-      headerName: 'Action', field: "", pinned: 'right', width: 80, cellRenderer: function () {
-        return '<div style="justify-content: space-between;display: flex;margin-top: 0.7em;font-size: 1.3em;">' +
-                  '<i  class="fa fa-ban" aria-hidden="true" style="color: #293e40;cursor: pointer;" placement="left" ngbTooltip="Decline" (click) = "decline()"></i>' + 
-                  '<i  class="fa fa-check-circle" aria-hidden="true" style="color: #293e40;cursor: pointer;" placement="right" ngbTooltip="Approved" (click) = "approved()"></i>' +
-                '</div>'
-      }
-    },
+    {headerName: 'Action', pinned: 'right', width: 100, cellRendererFramework: TrfActionComponent}
   ];
 
   rowData = [];
@@ -68,13 +62,5 @@ export class ViewTrainingRequestComponent implements OnInit {
 
   backToTRFList(){
     this.router.navigateByUrl('/private/trf');
-  }
-
-  decline(){
-    console.log("declined");
-  }
-
-  approved(){
-    console.log("approved");
   }
 }

@@ -1,4 +1,4 @@
-<div style="display: flex; justify-content: space-around;    margin-top: 1em;">
+<div style="display: flex; justify-content: space-around;    margin-top: 1em;" *ngIf="url === 'trf'">
     <!-- <button type="button" class="btn btn-light"> <i class="fa fa-ellipsis-v" aria-hidden="true"
             style="color: #293e40; cursor: pointer;"></i>
     </button> -->
@@ -10,4 +10,9 @@
     </button> -->
     <i class="fa fa-eye" aria-hidden="true" style="color: #293e40; cursor: pointer; font-size: large;" placement="right" ngbTooltip="View" (click) = "viewTrf()"></i>
     <i class="fa-regular fa-pen-to-square" *ngIf="isEditShow" style="color: #293e40; cursor: pointer; font-size: large;" placement="left" ngbTooltip="Edit" (click) = "editTrf()"></i>
+</div>
+
+<div style="display: flex; justify-content: space-around;    margin-top: 1em;" *ngIf="url === 'view-request'">
+    <i  class="fa fa-ban" aria-hidden="true" style="color: #293e40;cursor: pointer;font-size: large;" placement="left" ngbTooltip="Decline" (click) = "decline()"></i>
+    <i  class="fa fa-check-circle" aria-hidden="true" style="color: #293e40;cursor: pointer;font-size: large;" placement="right" ngbTooltip="Approved" (click) = "approved()"></i>
 </div>

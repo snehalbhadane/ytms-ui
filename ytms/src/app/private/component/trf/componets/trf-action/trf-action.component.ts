@@ -13,18 +13,21 @@ export class TrfActionComponent implements OnInit {
   user!:any;
   params: any;
   isEditShow: boolean = false;
- 
+  url! : string;
  constructor(private router: Router, private trfService: TrfService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    
   }
 
   agInit(params: any): void {
+      let index = this.router.url.lastIndexOf("/") + 1;
+      this.url = this.router.url.substring(index);
       this.params = params;
       this.user = this.authService.getLoginUserDetails();
-      if(this.params.data?.createdBy === this.user?.email && params.data?.status === 'PENDING'){
-        this.isEditShow = true;
+      if(this.url === 'trf'){
+        if(this.params.data?.createdBy === this.user?.email && params.data?.status === 'PENDING'){
+          this.isEditShow = true;
+        }
       }
   }
 
@@ -59,5 +62,13 @@ export class TrfActionComponent implements OnInit {
         alert(err.error);
       }
     ); 
+  }
+
+  decline(){
+    console.log("declined");
+  }
+
+  approved(){
+    console.log("approved");
   }
 }
