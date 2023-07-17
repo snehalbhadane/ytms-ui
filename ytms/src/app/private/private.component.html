@@ -34,6 +34,8 @@
                                 class="nav_name">Training</span> </a> 
                         <a *ngIf = "role.roleName === 'ROLE_ADMIN'" ngbTooltip="Training Summary" class="nav_link" routerLinkActive="active" [routerLink] = "['summary']" style="cursor: pointer;"> <i
                                 class='bx bxs-report nav_icon'></i> <span class="nav_name">Training Summary</span> </a>
+                        <a *ngIf = "role.roleName === 'ROLE_USER'" ngbTooltip="Consolidated Training Report" class="nav_link" routerLinkActive="active" [routerLink] = "['ctr']"> <i class='fa fa-file nav_icon'></i> <span
+                            class="nav_name" style="display: block;width: 150px;word-wrap: break-word;">CTR</span></a> 
                     </div>
                 </div>
                 <a ngbTooltip="Logout" class="nav_link" style="cursor: pointer;"> <i class='bx bx-log-out nav_icon' (click) = "logOut()"></i> <span

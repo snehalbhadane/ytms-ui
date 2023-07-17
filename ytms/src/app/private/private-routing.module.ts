@@ -9,6 +9,7 @@ import { TrainingComponent } from './component/training/training.component';
 import { TrainingsummaryComponent } from './component/trainingsummary/trainingsummary.component';
 import { AuthGuard } from '../auth-guard/auth.guard';
 import { ViewTrainingRequestComponent } from './component/trf/componets/view-training-request/view-training-request.component';
+import { CtrComponent } from './component/ctr/ctr.component';
 
 const routes: Routes = [
   {
@@ -22,7 +23,8 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_USER","ROLE_ADMIN"] }  },
       { path: 'trainer', component: TrainerComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_ADMIN"] }  },
       { path: 'training', component: TrainingComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_ADMIN"] }  },
-      { path: 'summary', component: TrainingsummaryComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_ADMIN"] } }
+      { path: 'summary', component: TrainingsummaryComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_ADMIN"] } },
+      { path: 'ctr', component: CtrComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_USER"] } }
     ]
   },
 ];
