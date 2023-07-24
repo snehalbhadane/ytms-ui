@@ -10,6 +10,7 @@ import { TrainingsummaryComponent } from './component/trainingsummary/trainingsu
 import { AuthGuard } from '../auth-guard/auth.guard';
 import { ViewTrainingRequestComponent } from './component/trf/componets/view-training-request/view-training-request.component';
 import { CtrComponent } from './component/ctr/ctr.component';
+import { CtrassociatedetailsComponent } from './component/ctr/ctrassociatedetails/ctrassociatedetails.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
       { path: 'trainer', component: TrainerComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_ADMIN"] }  },
       { path: 'training', component: TrainingComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_ADMIN"] }  },
       { path: 'summary', component: TrainingsummaryComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_ADMIN"] } },
-      { path: 'ctr', component: CtrComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_USER"] } }
+      { path: 'ctr', component: CtrComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_USER"] } },
+      { path: 'ctr/associates', component: CtrassociatedetailsComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_USER"] } }
     ]
   },
 ];

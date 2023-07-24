@@ -16,6 +16,7 @@ import { TrainingsummaryComponent } from './component/trainingsummary/trainingsu
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { ViewTrainingRequestComponent } from './component/trf/componets/view-training-request/view-training-request.component';
 import { CtrComponent } from './component/ctr/ctr.component';
+import { CtrassociatedetailsComponent } from './component/ctr/ctrassociatedetails/ctrassociatedetails.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CtrComponent } from './component/ctr/ctr.component';
     TrainingComponent,
     TrainingsummaryComponent,
     ViewTrainingRequestComponent,
-    CtrComponent
+    CtrComponent,
+    CtrassociatedetailsComponent
   ],
   imports: [
     CommonModule,

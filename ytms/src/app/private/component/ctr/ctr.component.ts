@@ -63,5 +63,6 @@ export class CtrComponent implements OnInit {
 
   onRowClicked(event : any){
     console.log(event);
+    this.router.navigateByUrl('/private/ctr/associates');
   }
 }
