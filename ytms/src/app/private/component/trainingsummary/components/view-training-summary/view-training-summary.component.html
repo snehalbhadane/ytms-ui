@@ -1,0 +1,44 @@
+<h2 style="text-align: center;">Training Summary Details</h2>
+
+<button class="btn btn-primary" style="float: inline-end; margin-bottom: 10px;" routerLink="#"
+    routerLinkActive="active">Create New
+    Training Summary</button>
+
+<div class="container tbl-container">
+    <div class="row tbl-fixed">
+        <table class="table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>TrainingSummary Id</th>
+                    <th>Training Plan</th>
+                    <th>Trainer</th>
+                    <th>Training Pattern</th>
+                    <th>Duration</th>
+                    <th>Created On</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ts of trainingSummary">
+                    <td>{{ts.trainingSummaryId}}</td>
+
+                    <td>{{ts.trainingPlan}}</td>
+
+                    <td>{{ts.trainer}}</td>
+
+                    <td>{{ts.trainingPattern}}</td>
+
+                    <td>{{ts.duration}}</td>
+
+                    <td>{{ts.createdOn}}</td>
+
+                    <td>
+                        <button (click)="deleteTrainingSummary(ts.trainingSummaryId)" class="btn btn-secondary"
+                            style="margin-left: 5px;">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

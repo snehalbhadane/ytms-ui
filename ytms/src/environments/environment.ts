@@ -13,7 +13,8 @@ export const environment = {
   updateTrf : "/trf/update",
   logoutUrl : "/useraccess/logout",
   getTrfByStatus : "/trf/getTrfByStatus",
-  updateTrfStatus : "/trf/updateTrfStatus"
+  updateTrfStatus : "/trf/updateTrfStatus",
+  getCTRList: "/tsm/getTrainigSummaryDetails"
 };
 
 /*
