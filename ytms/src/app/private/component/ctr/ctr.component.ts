@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ColDef, GridOptions, GridReadyEvent } from 'ag-grid-community';
+import { TrfService } from '../trf/service/trf.service';
 
 @Component({
   selector: 'app-ctr',
@@ -44,21 +45,33 @@ export class CtrComponent implements OnInit {
     onGridReady: event => console.log('The grid is now ready'),
   }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private trfService : TrfService) { }
 
   ngOnInit(): void {
   }
 
   onGridReady(params: GridReadyEvent) {
-      // this.trfService.getTrfList()
-      // .subscribe(
-      //   (data: any) =>{
-      //     this.rowData = data;
-      //   },
-      //   (err:any) =>{
-      //     alert(err.error);
-      //   }
-      // );  
+      this.trfService.getCTRList()
+      .subscribe(
+        (data: any) =>{
+          this.rowData = [];
+          data.forEach((e:any) => {
+            this.rowData.push({
+              trainingTitle : e.trainingPlan.trainingName,
+              status : e.trainingPlan.status,
+              trainerName : e.trainingPlan.user.firstName+" "+e.trainingPlan.user.lastName,
+              qtr : "",
+              year : "", 
+              startDate : e.trainingPlan.actualStartDate,
+              endDate : e.trainingPlan.actualEndDate,
+              initiatedFrom : "abc"
+            });
+          });
+        },
+        (err:any) =>{
+          alert(err.error);
+        }
+      );  
   }
 
   onRowClicked(event : any){

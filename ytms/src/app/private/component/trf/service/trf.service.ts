@@ -83,4 +83,9 @@ export class TrfService {
   updateTRFStatus(status: string, trfId: number): Observable<any> {
     return this.http.get(environment.baseUrl + environment.updateTrfStatus + "?trfId=" + trfId + "&status=" + status);
   }
+
+  // get ctr list
+  getCTRList(): Observable<any> {
+    return this.http.get(environment.baseUrl + environment.getCTRList);
+  }
 }
