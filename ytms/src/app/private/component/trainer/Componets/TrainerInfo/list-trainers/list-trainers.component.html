@@ -1,1 +1,62 @@
-<p>list-trainers works!</p>
+<h2 style="text-align: center;">Trainers List</h2>
+
+<button class="btn btn-primary" style="float: inline-end; margin-bottom: 10px;" routerLink="trainersWithTasklist"
+    routerLinkActive="active">Check Trainers Status</button> 
+
+<div class="container tbl-container">
+    <div class="row tbl-fixed">
+        <table class="table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>TrainerId</th>
+                    <th>Base Location</th>
+                    <th>Current Location</th>
+                    <th>IRM</th>
+                    <th>Type</th>
+                    <th>Total Experience</th>
+                    <th>First Name</th>
+                    <th>Last Name </th>
+                    <th>Action</th>
+                   
+                </tr>
+            </thead>
+             <tbody>
+                <tr *ngFor="let ts of listTrainersComponent">
+                   
+                    <td>{{ts.trainerId}}</td>
+                    <td>{{ts.baseLocation}}</td>
+
+                    <td>{{ts.currentLocation}}</td>
+
+                    <td>{{ts.irm}}</td>
+
+                    <td>{{ts.type}}</td>
+
+                    <td>{{ts.totalExperience}}</td>
+
+                    <td>{{ts.user.firstName}}</td>
+                    <td>{{ts.user.lastName}}</td>
+
+
+                    <td>
+
+                        <button  class="btn btn-secondary"
+                    
+                         style="margin-left: 5px; "[routerLink]="['/private/trainer/view/'+ts.trainerId]"> Complete Profile View </button>
+
+                        <button  class="btn btn-secondary"
+                    
+                         style="margin-left: 5px; "[routerLink]="['/private/trainer/trainerUpadte/'+ts.trainerId]"> Update Profile </button>
+
+                        <button (click)="deleteTrainer(ts.trainerId)" class="btn btn-secondary"
+
+                            style="margin-left: 5px;">Delete</button>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

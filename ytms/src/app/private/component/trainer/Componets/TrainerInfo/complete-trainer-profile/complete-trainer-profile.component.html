@@ -1,0 +1,77 @@
+<div class="container tbl-container">
+    <div class="row tbl-fixed">
+        <table class="table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>TrainerId</th>
+                    <th>First Name</th>
+                    <th>Last Name </th>
+                    <th>Employee Code </th>
+                    <th>Base Location</th>
+                    <th>Current Location</th>
+                    <th>IRM</th>
+                    <th>Type</th>
+                    <th>Total Experience</th>
+                    <th>Mobile Number</th>
+                    <th>Email</th>
+                    <th>gender </th>
+                    <th>Profile CreatedOn</th>
+                    <th> Profile UpdatedOn</th>
+                    <th>Action</th>
+                   
+                </tr>
+            </thead>
+             <tbody>
+                <td>{{data.trainerId}}</td>
+                    <td>{{data.user.firstName}}</td>
+                    <td>{{data.user.lastName}}</td>
+                    <td>{{data.user.empCode}}</td>
+                    <td>{{data.baseLocation}}</td>
+                    <td>{{data.currentLocation}}</td>
+                    <td>{{data.irm}}</td>
+                    <td>{{data.type}}</td>
+                    <td>{{data.totalExperience}}</td>
+                    <td>{{data.user.mobile}}</td>
+                    <td>{{data.user.email}}</td>
+                    <td>{{data.user.gender}}</td>
+                    <td>{{data.user.createdOn}}</td>
+                    <td>{{data.updatedOn}}</td>
+
+                    <td>
+
+                        <!-- <button  class="btn btn-secondary"
+                    
+                         style="margin-left: 5px; "[routerLink]="['/private/trainer/trainerUpadte/'+data.trainerId]"> Update Profile </button> -->
+                         <!-- <button (click)="UpdateProfile(data)" class="btn btn-secondary"></button> -->
+                    </td>
+
+                <!-- <tr *ngFor="let ts of data">
+                   
+                    <td>{{ts.trainerId}}</td>
+                    <td>{{ts.user.firstName}}</td>
+                    <td>{{ts.user.lastName}}</td>
+                    <td>{{ts.user.empCode}}</td>
+                    <td>{{ts.baseLocation}}</td>
+                    <td>{{ts.currentLocation}}</td>
+                    <td>{{ts.irm}}</td>
+                    <td>{{ts.type}}</td>
+                    <td>{{ts.totalExperience}}</td>
+                    <td>{{ts.user.mobile}}</td>
+                    <td>{{ts.user.email}}</td>
+                    <td>{{ts.user.gender}}</td>
+                    <td>{{ts.user.createdOn}}</td>
+                    <td>{{ts.updatedOn}}</td>
+
+                    <td>
+
+                        <button  class="btn btn-secondary"
+                    
+                         style="margin-left: 5px;" routerLink='/private/trainer/view'> Update Profile </button>
+
+                    </td>
+                </tr>
+            </tbody> -->
+        </table>
+        
+    </div>
+</div>

@@ -27,6 +27,7 @@ import { AddTaskComponent } from './component/trainer/Componets/TrainerTask/add-
 import { ListTaskComponent } from './component/trainer/Componets/TrainerTask/list-task/list-task.component';
 import { DeleteTaskComponent } from './component/trainer/Componets/TrainerTask/delete-task/delete-task.component';
 import { UpdateTaskComponent } from './component/trainer/Componets/TrainerTask/update-task/update-task.component';
+import { CompleteTrainerProfileComponent } from './component/trainer/Componets/TrainerInfo/complete-trainer-profile/complete-trainer-profile.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,9 @@ import { UpdateTaskComponent } from './component/trainer/Componets/TrainerTask/u
     AddTaskComponent,
     ListTaskComponent,
     DeleteTaskComponent,
-    UpdateTaskComponent
+    UpdateTaskComponent,
+    CompleteTrainerProfileComponent,
+  
   ],
   imports: [
     CommonModule,

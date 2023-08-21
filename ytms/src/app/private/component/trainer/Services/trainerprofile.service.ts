@@ -10,28 +10,43 @@ import { Trainer } from '../Entity/trainer';
 export class TrainerprofileService {
 
   private baseURLT="http://localhost:8080/trainer";
+  //private baseURLTS="http://localhost:8080/trainer/saveTrainerDetails";
 
   constructor(private httpClient:HttpClient) { }
 
-    getTrainersList():Observable<Trainer[]>{
-      return this.httpClient.get<Trainer[]>(this.baseURLT+'/getTrainers')
-    }
+    getTrainersList():Observable<any>{
+       return this.httpClient.get<any>(this.baseURLT+'/getTrainers')
+     }
 
-getTrainerById(trainerId: number):Observable<any>{
+    // public getTrainersList(){
+    //   return this.httpClient.get(this.baseURLT+"/getTrainers/");
+    // }
 
-return this.httpClient.get(`${this.baseURLT+'/getTrainer'}/${trainerId}`);
+getTrainerById(id: number):Observable<any>{
+
+return this.httpClient.get(`${this.baseURLT+'/getTrainer'}/${id}`);
 }
 
-addTrainer(trainer:Trainer):Observable<Object>{
-  return this.httpClient.post((this.baseURLT+'/saveTrainerDetails'),trainer);
+addTrainer(data:any):Observable<Object>{
+
+  console.log("inside save service method")
+  console.log(data)
+
+  return this.httpClient.post((this.baseURLT+'/saveTrainerDetails/'),data);
+  //return this.httpClient.post(this.baseURLT,data);
 }
 
-updateTrainer(trainer: Trainer): Observable<Object> {
+updateTrainer(UpdateTrainer): Observable<Object> {
 
-  return this.httpClient.put((this.baseURLT+'/updateTrainerDetails'),trainer);
+  return this.httpClient.put((this.baseURLT+'/updateTrainerDetails/'),UpdateTrainer);
 }
 deleteTrainer(trainerId: number): Observable<any> {
-  return this.httpClient.delete(`${this.baseURLT+'/deleteTrainer'}/${trainerId}`);
+  return this.httpClient.delete(`${this.baseURLT+'/deleteTrainer/'}`+trainerId);
+}
+
+updateTrainerId(id:any,data:any): Observable<Object> {
+
+  return this.httpClient.put(`${this.baseURLT+'/updateTrainerDetails'}/${id}`,data);
 }
 
 }
