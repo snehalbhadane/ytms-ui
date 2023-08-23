@@ -4,6 +4,7 @@ import { ColDef,GridOptions,GridReadyEvent } from 'ag-grid-community';
 import { AgGridAngular } from 'ag-grid-angular';
 import { TrfService } from './service/trf.service';
 import { TrfActionComponent } from './componets/trf-action/trf-action.component';
+import { AuthService } from 'src/app/auth-guard/auth.service';
 
 @Component({
   selector: 'app-trf',
@@ -12,6 +13,7 @@ import { TrfActionComponent } from './componets/trf-action/trf-action.component'
 })
 export class TrfComponent implements OnInit {
 
+  role:any;
   searchValue : any;
   columnDefs: ColDef[] = [
     { headerName: 'Status', field: "status", pinned: 'left', width: 120,},
@@ -49,9 +51,11 @@ export class TrfComponent implements OnInit {
     onGridReady: event => console.log('The grid is now ready'),
   }
 
-  constructor(private router: Router, private trfService: TrfService) { }
+  constructor(private router: Router, private trfService: TrfService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    let user = this.authService.getLoginUserDetails();
+    this.role = user.role;
   }
 
   onGridReady(params: GridReadyEvent) {
