@@ -1,9 +1,17 @@
+<div class="card-header">
+
+    <span style="font-weight: 700; margin-top: 0.4em;">Trainer Profile</span>
+
+</div>
 <div class="container tbl-container">
     <div class="row tbl-fixed">
+        <h2 style="text-align: center;">
+Trainer Details
+        </h2>
         <table class="table-striped table-condensed">
             <thead>
                 <tr>
-                    <th>TrainerId</th>
+                    <!-- <th>TrainerId</th>
                     <th>First Name</th>
                     <th>Last Name </th>
                     <th>Employee Code </th>
@@ -17,13 +25,73 @@
                     <th>gender </th>
                     <th>Profile CreatedOn</th>
                     <th> Profile UpdatedOn</th>
-                    <th>Action</th>
-                   
+                    <th>Action</th> -->
+                   <td>TrainerId</td>
+                   <td><b>{{data.trainerId}}</b></td>
                 </tr>
+
+                <tr>
+                <td>Registration No</td>
+                <td><b>{{data.user.userId}}</b></td>
+             </tr>
+                <tr>
+                <td>First Name: </td>
+                <td>{{data.user.firstName}}</td>
+            </tr>
+
+            <tr>
+                <td>Last Name: </td>
+                <td>{{data.user.lastName}}</td>
+            </tr>
+            <tr>
+                <td>Employee No: </td>
+                <td>{{data.user.empCode}}</td>
+            </tr>
+            <tr>
+                <td>Base Location: </td>
+                <td>{{data.baseLocation}}</td>
+            </tr>
+            <tr>
+                <td>Current Location: </td>
+                <td>{{data.currentLocation}}</td>
+            </tr>
+            <tr>
+                <td>IRM: </td>
+                <td>{{data.irm}}</td>
+            </tr>
+            <tr>
+                <td>Type: </td>
+                <td>{{data.type}}</td>
+            </tr>
+            <tr>
+                <td>Total Experience: </td>
+                <td>{{data.totalExperience}}</td>>
+            </tr>
+            <tr>
+                <td>Contact No: </td>
+                <td>{{data.user.mobile}}</td>
+            </tr>
+            <tr>
+                <td>Email: </td>
+                <td>{{data.user.email}}</td>
+            </tr>
+            <tr>
+                <td>Gender: </td>
+                <td>{{data.user.gender}}</td>
+            </tr>
+            <tr>
+                <td>CreatedOn: </td>
+                <td>{{data.user.createdOn}}</td>
+            </tr>
+            <tr>
+                <td>updatedOn: </td>
+                <td>{{data.updatedOn}}</td>
+            </tr>
+
             </thead>
-             <tbody>
-                <td>{{data.trainerId}}</td>
-                    <td>{{data.user.firstName}}</td>
+             <!-- <tbody>
+                
+                    
                     <td>{{data.user.lastName}}</td>
                     <td>{{data.user.empCode}}</td>
                     <td>{{data.baseLocation}}</td>
@@ -35,7 +103,7 @@
                     <td>{{data.user.email}}</td>
                     <td>{{data.user.gender}}</td>
                     <td>{{data.user.createdOn}}</td>
-                    <td>{{data.updatedOn}}</td>
+                    <td>{{data.updatedOn}}</td> -->
 
                     <td>
 
@@ -71,7 +139,7 @@
                     </td>
                 </tr>
             </tbody> -->
+            <button class="btn btn-secondary" style="margin-left: 0px;" routerLink='/private/trainer/trainerslist'>Back</button>
         </table>
-        
     </div>
 </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TrainersTaskService } from './Services/trainers-task.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-trainer',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrainerComponent implements OnInit {
 
-  constructor() { }
+  listTrainersTaskComponent:any
+data: any;
+
+  constructor(private trainertaskeService :TrainersTaskService,private _router: Router) { }
 
   ngOnInit(): void {
+   this.trainertaskeService.getTrainerTasks().subscribe((data)=>{
+
+      console.log(data)
+      
+      this.listTrainersTaskComponent= data;
+  
+  
+      },(error) => {
+        console.log(error);
+      });
   }
 
 }

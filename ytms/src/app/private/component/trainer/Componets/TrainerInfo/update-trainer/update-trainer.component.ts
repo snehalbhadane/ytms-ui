@@ -32,18 +32,19 @@ UpdateTrainer= new FormGroup({
 
   ngOnInit(): void {
 
-    this.dataforupdateid=this.acturouter.snapshot.params['trainerId'];
-    console.log(this.dataforupdateid);
-    
-    this.trainerprofileService.getTrainerById(this.dataforupdateid).subscribe((data: any)=>{
+    //this.dataforupdateid=this.acturouter.snapshot.params['trainerId'];
+    this.acturouter.snapshot.params['trainerId']
 
-    //   console.log(data);
-      
-    //   this.dataUpdate=data;
-
-    //  console.log("new for update from data")
-    //   console.log(this.dataUpdate);
+    //console.log(this.dataforupdateid);
     
+    //this.trainerprofileService.getTrainerById(this.dataforupdateid).subscribe((data: any)=>{
+      this.trainerprofileService.getTrainerById(this.acturouter.snapshot.params['trainerId']).subscribe((data: any)=>{
+
+     console.log(data);
+     console.log(data.user.userId);
+     const userrrqueiredid=data.user.userId;
+     console.log(userrrqueiredid);
+     
       this.UpdateTrainer= new FormGroup({
 
         trainerId:new FormControl(data ['trainerId']),
@@ -52,8 +53,9 @@ UpdateTrainer= new FormGroup({
         irm:new FormControl(data ['irm']),
         type:new FormControl(data ['type']),
         totalExperience:new FormControl(data ['totalExperience']),
+        
         user:new FormGroup({
-        userId:new FormControl(data ['userId'])
+        userId:new FormControl(data.user.userId['userId'])
     
         })
     });
@@ -61,32 +63,17 @@ UpdateTrainer= new FormGroup({
   })
  
 }
-  // getOne(id:any){
-  //   this.trainerprofileService.getTrainerById(this.dataforupdate).subscribe((data: any)=>{
-
-  //     console.log(data);
-  //     this.dataUpdate=data;
-
-  //  console.log("new for update from data")
-  //     console.log(this.dataUpdate);
-  //   }
-  //     )
-  // }
-
-  // UpdateProfile(dataforupdate:any){
-  //   this.trainerprofileService.updateTrainer(dataforupdate).subscribe((result2)=>{
-  //     console.log(result2);
-  //     this.dataUpdate=result2;
-  //   })
-
-  // }
+  
  
   collectionsUpdate(){
 
     console.warn(this.UpdateTrainer.value);
-    this.trainerprofileService.updateTrainer(this.UpdateTrainer.value).subscribe((updateresult)=>{
-      console.warn(updateresult)
-    })
+    // this.trainerprofileService.updateTrainer(this.UpdateTrainer.value).subscribe((updateresult)=>{
+    //   console.warn(updateresult)
+    // })
   
+    this.trainerprofileService.updateTrainerId(this.acturouter.snapshot.params['trainerId'],this.UpdateTrainer.value).subscribe((data)=>{
+      console.log(data,"data udated")
+    })
   }
 }

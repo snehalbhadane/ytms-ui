@@ -17,18 +17,29 @@ export class TrainersTaskService {
       return this.httpClient1.get<TrainerTask[]>(this.baseURLT+'/getTrainerTasks')
     }
 
-getTrainerTaskByTaskId(trainerTaskId: number):Observable<any>{
+// getTrainerTaskByTaskId(trainerTaskId: number):Observable<any>{
 
-return this.httpClient1.get(`${this.baseURLT+'/getTrainerTask'}/${trainerTaskId}`);
-}
+// return this.httpClient1.get(`${this.baseURLT+'/getTrainerTask'}/${trainerTaskId}`);
+
+// }
+
+getTrainerTaskByTaskId(id: number):Observable<any>{
+
+  console.log(id);
+
+  return this.httpClient1.get(`${this.baseURLT+'/getTrainerTask'}/${id}`);
+  }
 
 getTrainerTasksByCreatedById(createdById: number):Observable<any>{
 
   return this.httpClient1.get(`${this.baseURLT+'/getTrainerTasksByCreatedById'}/${createdById}`);
   }
 
-saveTrainerTask(trainertask:TrainerTask):Observable<Object>{
-  return this.httpClient1.post((this.baseURLT+'/saveTrainerTask'),trainertask);
+saveTrainerTask(addTrainerTask:any):Observable<Object>{
+  console.log("inside save service method")
+  console.log(addTrainerTask)
+  return this.httpClient1.post((this.baseURLT+'/saveTrainerTask/'),addTrainerTask);
+
 }
 
 updateTrainerTask(trainerTask: TrainerTask): Observable<Object> {
@@ -40,5 +51,12 @@ deleteTrainerTask(trainerTaskId: number): Observable<any> {
   return this.httpClient1.delete(`${this.baseURLT+'/deleteTrainerTask'}/${trainerTaskId}`);
 }
 
+updateTrainerTaskByTaskId(id:number,data:any): Observable<Object> {
+
+  console.log("inside update service method")
+  console.log(data);
+
+  return this.httpClient1.put(`${this.baseURLT+'/updateTask'}/${id}`,data);
 }
 
+}

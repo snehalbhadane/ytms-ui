@@ -28,6 +28,8 @@ import { ListTaskComponent } from './component/trainer/Componets/TrainerTask/lis
 import { DeleteTaskComponent } from './component/trainer/Componets/TrainerTask/delete-task/delete-task.component';
 import { UpdateTaskComponent } from './component/trainer/Componets/TrainerTask/update-task/update-task.component';
 import { CompleteTrainerProfileComponent } from './component/trainer/Componets/TrainerInfo/complete-trainer-profile/complete-trainer-profile.component';
+import { CommonpageComponent } from './component/trainer/Componets/commonpage/commonpage.component';
+
 
 @NgModule({
   declarations: [
@@ -53,6 +55,7 @@ import { CompleteTrainerProfileComponent } from './component/trainer/Componets/T
     DeleteTaskComponent,
     UpdateTaskComponent,
     CompleteTrainerProfileComponent,
+    CommonpageComponent,
   
   ],
   imports: [

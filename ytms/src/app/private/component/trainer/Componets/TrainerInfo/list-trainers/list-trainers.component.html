@@ -1,7 +1,6 @@
 <h2 style="text-align: center;">Trainers List</h2>
 
-<button class="btn btn-primary" style="float: inline-end; margin-bottom: 10px;" routerLink="trainersWithTasklist"
-    routerLinkActive="active">Check Trainers Status</button> 
+
 
 <div class="container tbl-container">
     <div class="row tbl-fixed">
@@ -16,6 +15,8 @@
                     <th>Total Experience</th>
                     <th>First Name</th>
                     <th>Last Name </th>
+                    <th>Registraion Id</th>
+                   
                     <th>Action</th>
                    
                 </tr>
@@ -36,6 +37,8 @@
 
                     <td>{{ts.user.firstName}}</td>
                     <td>{{ts.user.lastName}}</td>
+                    <td>{{ts.user.userId}}</td>
+                   
 
 
                     <td>
@@ -55,7 +58,9 @@
                     </td>
                 </tr>
             </tbody>
+            <button class="btn btn-secondary" style="margin-left: 0px;" routerLink='/private/trainer'>Back</button>
         </table>
+
     </div>
 </div>
 

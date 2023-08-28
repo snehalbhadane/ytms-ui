@@ -36,17 +36,22 @@ addTrainer(data:any):Observable<Object>{
   //return this.httpClient.post(this.baseURLT,data);
 }
 
-updateTrainer(UpdateTrainer): Observable<Object> {
+updateTrainer(UpdateTrainer:any): Observable<Object> {
 
-  return this.httpClient.put((this.baseURLT+'/updateTrainerDetails/'),UpdateTrainer);
+ 
+
+  return this.httpClient.put((this.baseURLT+'/updateTrainerDetails'),UpdateTrainer);
 }
 deleteTrainer(trainerId: number): Observable<any> {
   return this.httpClient.delete(`${this.baseURLT+'/deleteTrainer/'}`+trainerId);
 }
 
-updateTrainerId(id:any,data:any): Observable<Object> {
+updateTrainerId(id:number,data:any): Observable<Object> {
 
-  return this.httpClient.put(`${this.baseURLT+'/updateTrainerDetails'}/${id}`,data);
+  console.log("inside update service method")
+  console.log(data);
+  
+  return this.httpClient.put(`${this.baseURLT+'/updateTrainerDetail'}/${id}`,data);
 }
 
 }

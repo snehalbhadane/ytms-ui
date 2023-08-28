@@ -1,1 +1,118 @@
-<p>list-task works!</p>
+<!-- <div class="container tbl-container">
+    <div class="row tbl-fixed">
+        <table class="table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>TrainerTaskId</th>
+                    <th>FirstHalf</th>
+                    <th>FirstHalfDescription </th>
+                    <th>SecondHalf</th>
+                    <th>SecondHalfDescription</th>
+                    <th>TrainerId</th>
+                    <th>EmpCode</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>CurrentLocation</th>
+                    <th>BaseLocation</th>
+                    <th>IRM </th>
+                    <th>Action</th>
+                   
+                </tr>
+            </thead>
+             <tbody>
+                <td>{{listTrainersTaskComponent.trainerTaskId}}</td>
+                    <td>{{listTrainersTaskComponent.firstHalf}}</td>
+                    <td>{{listTrainersTaskComponent.firstHalfDescription}}</td>
+                    <td>{{listTrainersTaskComponent.secondHalf}}</td>
+                    <td>{{listTrainersTaskComponent.secondHalfDescription}}</td>
+                    <td>{{listTrainersTaskComponent.trainer.trainerId}}</td>
+                    <td>{{listTrainersTaskComponent.user.empCode}}</td>
+                    <td>{{listTrainersTaskComponent.user.firstName}}</td>
+                    <td>{{listTrainersTaskComponent.user.lastName}}</td>
+                    <td>{{listTrainersTaskComponent.trainer.currentLocation}}</td>
+                    <td>{{listTrainersTaskComponent.trainer.baseLocation}}</td>
+                    <td>{{listTrainersTaskComponent.trainer.irm}}</td>
+                    <td>{{listTrainersTaskComponent.user.mobile}}</td>
+                  
+            
+
+                    <td>
+
+                       
+                    </td>
+
+                
+               
+            </tbody> 
+        </table>
+        
+    </div>
+</div> -->
+
+<div class="container tbl-container">
+    <div class="row tbl-fixed">
+        <table class="table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>TrainerTaskId</th>
+                    <th>TrainerId</th>
+                    <th>Task Date</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>EmpCode</th>
+                    <th>FirstHalf</th>
+                    <th>FirstHalfDescription </th>
+                    <th>SecondHalf</th>
+                    <th>SecondHalfDescription</th>
+                    <th>Last Update On</th>
+                    <th>View Trainer Profile</th>
+                   
+                </tr>
+            </thead>
+             <tbody>
+                <tr *ngFor="let ts of listTrainersTaskComponent">
+                   
+                    <td>{{ts.trainerTaskId}}</td>
+                    <td>{{ts.trainer.trainerId}}</td>
+
+                    <td>{{ts.taskDate}}</td>
+
+                    <td>{{ts.trainer.user.firstName}}</td>
+                    <td>{{ts.trainer.user.lastName}}</td>
+                    <td>{{ts.trainer.user.empCode}}</td>
+
+                    <td>{{ts.firstHalf}}</td>
+
+                    <td>{{ts.firstHalfDescription}}</td>
+
+                    <td>{{ts.secondHalf}}</td>
+
+                    <td>{{ts.secondHalfDescription}}</td>
+                    <td>{{ts.updatedOn}}</td>
+                    <td>
+
+                        
+
+                        <button  class="btn btn-secondary"
+                    
+                         style="margin-left: 5px; "[routerLink]="['/private/trainer/view/'+ts.trainer.trainerId]"> View Trainer Profile </button>
+
+                         <button  class="btn btn-secondary"
+                    
+                         style="margin-left: 5px; "[routerLink]="['/private/trainer/updateTask/'+ts.trainerTaskId]"> Update Task </button>
+
+                         <button (click)="deleteTrainerTask(ts.trainerTaskId)" class="btn btn-secondary"
+
+                         style="margin-left: 5px;">Delete</button>
+                           
+
+                    </td>
+                </tr>
+            </tbody>
+            <button class="btn btn-secondary" style="margin-left: 15px;" routerLink='/private/trainer'>Back</button>
+
+        </table>
+    </div>
+</div>
+
+
