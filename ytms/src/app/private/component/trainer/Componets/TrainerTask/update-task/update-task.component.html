@@ -1,0 +1,49 @@
+<form [formGroup]="addTrainerTask"  (ngSubmit)="TaskUpdate()">
+
+   <!-- <div class="col">
+      <label style="font-size: small; margin-bottom: 0rem;">taskDate Date</label>
+      <input type="date" [min]="minStartDate" (change)="($event)" formControlName="taskDate" class="form-control">
+      
+  </div>  -->
+  <div class="mb-3">
+    <label class ="form-label">Task Id</label>
+    <input type="text" class="form-control" placeholder="enter" formControlName="trainerTaskId">
+  </div>
+      <div class="mb-3">
+          <label for="type">FirstHalf</label>
+          <select id="inputState" class="form-control" placeholder="enter" formControlName="firstHalf">
+            <option selected>Choose...</option>
+            <option>Available</option>
+            <option>Engged</option>
+          </select>
+        </div>
+  
+      <div class="mb-3">
+        <label class ="form-label">Provide firstHalfDescription</label>
+        <input type="text" class="form-control" placeholder="enter" formControlName="firstHalfDescription">
+      </div>
+      <div class="mb-3">
+          <label for="type">SecondHalf</label>
+          <select id="inputState" class="form-control" placeholder="enter" formControlName="secondHalf">
+            <option selected>Choose...</option>
+            <option>Available</option>
+            <option>Engged</option>
+          </select>
+        </div>
+  
+      <div class="mb-3">
+        <label class ="form-label">Provide SecondHalffDescription</label>
+        <input type="text" class="form-control" placeholder="enter" formControlName="secondHalfDescription">
+      </div>
+     
+        <div formGroupName="trainer">
+          <h2>Trainer</h2>
+        
+          <label class ="form-label">trainerId </label>
+          <input type="number" class="form-control" placeholder="enter" formControlName="trainerId">
+          </div>
+  
+  <button type="submit" class="btn btn-primary">Save</button>
+  
+    </form>
+  

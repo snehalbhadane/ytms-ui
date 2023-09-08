@@ -26,15 +26,15 @@
                     <div class="nav_list"> 
                         <a ngbTooltip="Dashboard" class="nav_link" routerLinkActive="active" [routerLink] = "['dashboard']"> <i class='bx bx-grid-alt nav_icon'></i>
                             <span class="nav_name">Dashboard</span> </a> 
-                        <a *ngIf = "role.roleName === 'ROLE_ADMIN'" ngbTooltip="Trainer" class="nav_link" routerLinkActive="active" [routerLink] = "['trainer']" style="cursor: pointer;"> <i
+                        <a *ngIf = "role.roleName === 'ROLE_TRAINER'" ngbTooltip="Trainer" class="nav_link" routerLinkActive="active" [routerLink] = "['trainer']" style="cursor: pointer;"> <i
                                 class='bx bx-user nav_icon'></i> <span class="nav_name">Trainer</span> </a> 
-                        <a *ngIf = "role.roleName === 'ROLE_USER'" ngbTooltip="Training Request Form" class="nav_link" routerLinkActive="active" [routerLink] = "['trf']"> <i class='bx bx-message-square-detail nav_icon'></i> <span
+                        <a *ngIf = "role.roleName === 'ROLE_USER' || role.roleName === 'ROLE_ADMIN'" ngbTooltip="Training Request Form" class="nav_link" routerLinkActive="active" [routerLink] = "['trf']"> <i class='bx bx-message-square-detail nav_icon'></i> <span
                                 class="nav_name" style="display: block;width: 150px;word-wrap: break-word;">TRF</span></a> 
                         <a *ngIf = "role.roleName === 'ROLE_ADMIN'" ngbTooltip="Training" class="nav_link" routerLinkActive="active" [routerLink] = "['training']" style="cursor: pointer;"> <i class='bx bx-code nav_icon'></i> <span
                                 class="nav_name">Training</span> </a> 
                         <a *ngIf = "role.roleName === 'ROLE_TRAINER'" ngbTooltip="Training Summary" class="nav_link" routerLinkActive="active" [routerLink] = "['summary']" style="cursor: pointer;"> <i
                                 class='bx bxs-report nav_icon'></i> <span class="nav_name">Training Summary</span> </a>
-                        <a *ngIf = "role.roleName === 'ROLE_USER'" ngbTooltip="Consolidated Training Report" class="nav_link" routerLinkActive="active" [routerLink] = "['ctr']"> <i class='fa fa-file nav_icon'></i> <span
+                        <a *ngIf = "role.roleName === 'ROLE_USER' || role.roleName === 'ROLE_ADMIN'" ngbTooltip="Consolidated Training Report" class="nav_link" routerLinkActive="active" [routerLink] = "['ctr']"> <i class='fa fa-file nav_icon'></i> <span
                             class="nav_name" style="display: block;width: 150px;word-wrap: break-word;">CTR</span></a> 
                     </div>
                 </div>

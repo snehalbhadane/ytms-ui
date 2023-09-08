@@ -1,0 +1,86 @@
+<!-- <form>
+    <form [formGroup]="" (ngSubmit)="onSubmit()">
+
+      <div class="col">
+        <label for="user" style="font-size: meddium; margin-bottom: 1rem;">UserId</label>
+        <input type="number" formControlName="duration" class="form-control" [(ngModel)]="saveTrainerComponent.user">
+    </div>
+      <div class="form-group col-md-6">
+        <label for="currentLocation">Current Location</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder=""[(ngModel)]="saveTrainerComponent.currentLocation">
+      </div>
+    <div class="form-group">
+      <label for="baseLocation">Base Location</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="" [(ngModel)]="saveTrainerComponent.baseLocation">
+    </div>
+    <div class="form-group">
+        <label for="irm">IRM</label>
+        <input type="text" class="form-control" id="inputIRM" placeholder="" [(ngModel)]="saveTrainerComponent.irm">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="type">Type</label>
+        <select id="inputState" class="form-control" [(ngModel)]="saveTrainerComponent.type">
+          <option selected>Choose...</option>
+          <option>Contract</option>
+          <option>Permanent</option>
+        </select>
+      </div> -->
+    <!-- <button type="submit" class="btn btn-primary">Save</button> -->
+    <!-- <button (click)="saveTrainer()">Save </button> -->
+    <!-- <button class="btn btn-success"  style="margin-left: 20%;"  type="submit" > Submit</button>
+</form>
+  </form> -->
+
+  <form [formGroup]="addTrainer" (ngSubmit)="onSubmit()">
+
+    <!-- <div class="mb-3">
+      <label class ="form-label" style="font-size: meddium; margin-bottom: 1rem;">UserId</label>
+      <input type="number" class="form-control" placeholder="enter" formControlName="user.userId">
+    </div> -->
+
+    <div class="mb-3">
+      <label class ="form-label">CurrentLocation</label>
+      <input type="text" class="form-control" placeholder="enter" formControlName="currentLocation">
+    </div>
+
+    <div class="mb-3">
+      <label class ="form-label">BaseLocation</label>
+      <input type="text" class="form-control" placeholder="enter" formControlName="baseLocation">
+    </div>
+
+    <div class="mb-3">
+      <label class ="form-label">IRM</label>
+      <input type="text" class="form-control" placeholder="enter" formControlName="irm">
+    </div>
+
+    <!-- <div class="mb-3">
+      <label class ="form-label">Type</label>
+      <input type="text" class="form-control" placeholder="enter" formControlName="type">
+    </div> -->
+
+    <div class="mb-3">
+      <label for="type">Type</label>
+      <select id="inputState" class="form-control" placeholder="enter" formControlName="type">
+        <option selected>Choose...</option>
+        <option>Contract</option>
+        <option>Permanent</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class ="form-label">TotalExperience</label>
+      <input type="text" class="form-control" placeholder="enter" formControlName="totalExperience">
+    </div>
+
+    <div formGroupName="user">
+      <h2>Registraion Id</h2>
+    
+      <label class ="form-label">UserId </label>
+      <input type="number" class="form-control" placeholder="enter" formControlName="userId">
+      </div>
+<button type="submit" class="btn btn-primary">Save</button>
+<button class="btn btn-secondary" style="margin-left: 15px;" routerLink='/private/trainer'>Back</button>
+
+  </form>
+  
+
+
