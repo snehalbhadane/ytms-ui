@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth-guard/auth.guard';
-import { AddTrainingSummaryComponent } from './private/component/trainingsummary/components/add-training-summary/add-training-summary.component';
 
 const routes: Routes = [
   {

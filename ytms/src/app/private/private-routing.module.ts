@@ -6,7 +6,6 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { CreateTrfComponent } from './component/trf/componets/create-trf/create-trf.component';
 import { TrainerComponent } from './component/trainer/trainer.component';
 import { TrainingComponent } from './component/training/training.component';
-import { TrainingsummaryComponent } from './component/trainingsummary/trainingsummary.component';
 import { AuthGuard } from '../auth-guard/auth.guard';
 import { ViewTrainingRequestComponent } from './component/trf/componets/view-training-request/view-training-request.component';
 import { CtrComponent } from './component/ctr/ctr.component';
@@ -19,6 +18,10 @@ import { CompleteTrainerProfileComponent } from './component/trainer/Componets/T
 import { AddTaskComponent } from './component/trainer/Componets/TrainerTask/add-task/add-task.component';
 import { CommonpageComponent } from './component/trainer/Componets/commonpage/commonpage.component';
 import { UpdateTaskComponent } from './component/trainer/Componets/TrainerTask/update-task/update-task.component';
+import { AddTrainingSummaryComponent } from './component/trainingsummary/components/add-training-summary/add-training-summary.component';
+import { ViewDetailsTrainingSummaryComponent } from './component/trainingsummary/components/view-details-training-summary/view-details-training-summary.component';
+import { UpdatetrainingsummaryComponent } from './component/trainingsummary/components/update-training-summary/updatetrainingsummary.component';
+import { TrainingsummaryComponent } from './component/trainingsummary/trainingsummary.component';
 
 const routes: Routes = [
   {
@@ -41,6 +44,9 @@ const routes: Routes = [
       { path: 'trainer/common page', component:CommonpageComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_TRAINER"] }  },
       { path: 'training', component: TrainingComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_ADMIN"] }  },
       { path: 'summary', component: TrainingsummaryComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_TRAINER"] } },
+      { path: 'summary/addTS', component: AddTrainingSummaryComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_TRAINER"] } },
+      { path: 'summary/view/:trainingSummaryId', component: ViewDetailsTrainingSummaryComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_TRAINER"] } },
+      { path: 'summary/update/:trainingSummaryId', component:UpdatetrainingsummaryComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_TRAINER"] } },
       { path: 'ctr', component: CtrComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_USER","ROLE_ADMIN"] } },
       { path: 'ctr/associates', component: CtrassociatedetailsComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_USER","ROLE_ADMIN"] } }
     ]

@@ -18,7 +18,6 @@ import { ViewTrainingRequestComponent } from './component/trf/componets/view-tra
 import { CtrComponent } from './component/ctr/ctr.component';
 import { CtrassociatedetailsComponent } from './component/ctr/ctrassociatedetails/ctrassociatedetails.component';
 import { AddTrainingSummaryComponent } from './component/trainingsummary/components/add-training-summary/add-training-summary.component';
-import { ViewTrainingSummaryComponent } from './component/trainingsummary/components/view-training-summary/view-training-summary.component';
 import { DeletTrainerComponent } from './component/trainer/Componets/TrainerInfo/delet-trainer/delet-trainer.component';
 import { SaveTrainerComponent } from './component/trainer/Componets/TrainerInfo/save-trainer/save-trainer.component';
 import { ListTrainersComponent } from './component/trainer/Componets/TrainerInfo/list-trainers/list-trainers.component';
@@ -29,6 +28,7 @@ import { DeleteTaskComponent } from './component/trainer/Componets/TrainerTask/d
 import { UpdateTaskComponent } from './component/trainer/Componets/TrainerTask/update-task/update-task.component';
 import { CompleteTrainerProfileComponent } from './component/trainer/Componets/TrainerInfo/complete-trainer-profile/complete-trainer-profile.component';
 import { CommonpageComponent } from './component/trainer/Componets/commonpage/commonpage.component';
+import { UpdatetrainingsummaryComponent } from './component/trainingsummary/components/update-training-summary/updatetrainingsummary.component';
 
 
 @NgModule({
@@ -45,7 +45,7 @@ import { CommonpageComponent } from './component/trainer/Componets/commonpage/co
     CtrComponent,
     CtrassociatedetailsComponent,
     AddTrainingSummaryComponent,
-    ViewTrainingSummaryComponent,
+    UpdatetrainingsummaryComponent,
     DeletTrainerComponent,
     SaveTrainerComponent,
     ListTrainersComponent,
@@ -56,7 +56,7 @@ import { CommonpageComponent } from './component/trainer/Componets/commonpage/co
     UpdateTaskComponent,
     CompleteTrainerProfileComponent,
     CommonpageComponent,
-  
+
   ],
   imports: [
     CommonModule,

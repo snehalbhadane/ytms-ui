@@ -1,9 +1,58 @@
 <div class="card-header">
     <div style="justify-content: space-between; display: flex;">
-        <h4>Training Summary</h4>
+        <!-- <h4>Training Request Form</h4> -->
+        <span style="font-weight: 700; margin-top: 0.4em;">Training Summary</span>
+        <div style="justify-content: space-between; display: flex;">
+            <button type="button" ngbTooltip="Create Training Summary" class="btn btn-light" (click)="createTs()"><i
+                    class='bx bx-plus-circle' style="color: #293e40;cursor: pointer;font-size: 1.5rem;"></i>
+            </button>
+        </div>
     </div>
 </div>
 <div class="card-body">
-    <app-view-training-summary></app-view-training-summary>
-    
+    <div class="container tbl-container">
+        <div class="row tbl-fixed">
+            <table class="table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <th>TS Id</th>
+                        <th>Trainer Name</th>
+                        <th>Training Name</th>
+                        <th>Training Pattern</th>
+                        <th>Duration</th>
+                        <th>Created On</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ts of trainingSummary">
+                        <td>{{ts.trainingSummaryId}}</td>
+
+                        <td>{{ts.trainer.firstName}}</td>
+
+                        <td>{{ts.trainingPlan.trainingName}}</td>
+
+                        <td>{{ts.trainingPattern}}</td>
+
+                        <td>{{ts.duration}}</td>
+
+                        <td>{{ts.createdOn}}</td>
+
+                        <td style="justify-content: space-around; display: flex;">
+                            <!-- <button class="btn btn-secondary" style="margin-left: 5px;" [routerLink]="['/private/summary/view/'+ts.trainingSummaryId]">View</button>  -->
+                            <img [routerLink]="['/private/summary/view/'+ts.trainingSummaryId]"
+                                ngbTooltip="view Training Summary" class="header-logo-image"
+                                src="../../../../assets/view_icon.png" alt="ytms training request"
+                                style="height: 1.5rem;">
+                            <img src="../../../../assets/delete-icon.png"
+                                (click)="deleteTrainingSummary(ts.trainingSummaryId)"
+                                ngbTooltip="Delete Training Summary" style="height: 1.5rem; margin-left: 10px;">
+                            <!-- <button (click)="deleteTrainingSummary(ts.trainingSummaryId)" class="btn btn-secondary" 
+                                style="margin-left: 5px;">Delete</button> -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

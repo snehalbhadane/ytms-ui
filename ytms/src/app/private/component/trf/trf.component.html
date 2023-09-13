@@ -6,20 +6,23 @@
             <div class="col-md-6">
                 <div class="form">
                     <i class="fa fa-search"></i>
-                    <input type="text" class="form-control form-input" [(ngModel)]="searchValue" placeholder="Search...">
+                    <input type="text" class="form-control form-input" [(ngModel)]="searchValue"
+                        placeholder="Search...">
                 </div>
             </div>
         </div>
         <div style="justify-content: space-between; display: flex;">
-            <img *ngIf = "role.roleName === 'ROLE_ADMIN'" [routerLink] = "['view-request']" ngbTooltip="Training Request" class="header-logo-image" src="../../../../assets/icons-training-request.png" alt="ytms training request">
-            <button ngbTooltip="Create Training Request" type="button" class="btn btn-light" (click)="createTrf()"> <i class='bx bx-plus-circle'
-                    style="color: #293e40;cursor: pointer;font-size: 1.5rem;"></i>
+            <img [routerLink]="['view-request']" ngbTooltip="Training Request" class="header-logo-image"
+                src="../../../../assets/icons-training-request.png" alt="ytms training request">
+            <button ngbTooltip="Create Training Request" type="button" class="btn btn-light" (click)="createTrf()"> <i
+                    class='bx bx-plus-circle' style="color: #293e40;cursor: pointer;font-size: 1.5rem;"></i>
             </button>
         </div>
     </div>
 </div>
 <div class="card-body">
     <ag-grid-angular style="height: calc(100vh - 28vh); width:100%;" class="ag-theme-alpine" [rowData]="rowData"
-    [quickFilterText]="searchValue" [columnDefs]="columnDefs" [gridOptions]="gridOptions" (gridReady)="onGridReady($event)">
+        [quickFilterText]="searchValue" [columnDefs]="columnDefs" [gridOptions]="gridOptions"
+        (gridReady)="onGridReady($event)">
     </ag-grid-angular>
 </div>

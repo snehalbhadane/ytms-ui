@@ -1,85 +1,85 @@
 <div class="card-header">
     <div style="justify-content: space-between; display: flex;">
-        <!-- <h4>Training Request Form</h4> -->
-        <span style="font-weight: 700; margin-top: 0.4em;">Create Training Summary</span>
+        <span style="font-weight: 700; margin-top: 0.4em;">Update Training Summary</span>
     </div>
 </div>
+
 <div class="card-body">
     <form>
         <div>
             <div class="mb-3">
                 <label class="form-label">Training Pattern</label>
                 <input type="text" class="form-control" placeholder="Enter Training Pattern"
-                    [(ngModel)]="addTS.trainingPattern" [ngModelOptions]="{standalone: true}">
+                    [(ngModel)]="trainingSummary.trainingPattern" [ngModelOptions]="{standalone: true}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Duration</label>
-                <input type="text" class="form-control" placeholder="Enter Duration" [(ngModel)]="addTS.duration"
+                <input type="text" class="form-control" placeholder="Enter Duration" [(ngModel)]="trainingSummary.duration"
                     [ngModelOptions]="{standalone: true}">
             </div>
             <div>
                 <label class="form-label">User Id </label>
                 <input type="number" class="form-control" placeholder="Enter User Id"
-                    [(ngModel)]="addTS.trainer.userId" [ngModelOptions]="{standalone: true}">
+                    [(ngModel)]="trainingSummary.trainer.userId" [ngModelOptions]="{standalone: true}">
             </div>
         </div>
         <hr>
         <div class="card-header">
             <div style="justify-content: space-between; display: flex;">
-                <span style="font-weight: 700; margin-top: 0.4em;">Create Training Plan</span>
+                <span style="font-weight: 700; margin-top: 0.4em;">Update Training Plan</span>
             </div>
-        </div>
+        
         <div class="card-body">
             <div class="mb-3">
                 <label class="form-label">Training Name</label>
-                <input type="text" [(ngModel)]="addTS.trainingPlan.trainingName" placeholder="Enter Training name"
+                <input type="text" [(ngModel)]="trainingSummary.trainingPlan.trainingName" placeholder="Enter Training name"
                     class="form-control" [ngModelOptions]="{standalone: true}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Topic Name</label>
                 <input type="text" class="form-control" placeholder="Enter Topic Name"
-                    [(ngModel)]="addTS.trainingPlan.topic" [ngModelOptions]="{standalone: true}">
+                    [(ngModel)]="trainingSummary.trainingPlan.topic" [ngModelOptions]="{standalone: true}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Contents Coverage</label>
                 <input type="text" class="form-control" placeholder="Enter Content Coverage"
-                    [(ngModel)]="addTS.trainingPlan.contentsCoverage" [ngModelOptions]="{standalone: true}">
+                    [(ngModel)]="trainingSummary.trainingPlan.contentsCoverage" [ngModelOptions]="{standalone: true}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Extra Topic Coverage</label>
                 <input type="text" class="form-control" placeholder="Enter Extra Topic Coverage"
-                    [(ngModel)]="addTS.trainingPlan.extraTopicCoverage" [ngModelOptions]="{standalone: true}">
+                    [(ngModel)]="trainingSummary.trainingPlan.extraTopicCoverage" [ngModelOptions]="{standalone: true}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Duration</label>
                 <input type="number" class="form-control" placeholder="Enter Duration"
-                    [(ngModel)]="addTS.trainingPlan.duration" [ngModelOptions]="{standalone: true}">
+                    [(ngModel)]="trainingSummary.trainingPlan.duration" [ngModelOptions]="{standalone: true}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Status</label>
                 <input type="text" class="form-control" placeholder="Enter Status"
-                    [(ngModel)]="addTS.trainingPlan.status" [ngModelOptions]="{standalone: true}">
+                    [(ngModel)]="trainingSummary.trainingPlan.status" [ngModelOptions]="{standalone: true}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Remark</label>
                 <input type="text" class="form-control" placeholder="Enter Remark"
-                    [(ngModel)]="addTS.trainingPlan.remark" [ngModelOptions]="{standalone: true}">
+                    [(ngModel)]="trainingSummary.trainingPlan.remark" [ngModelOptions]="{standalone: true}">
             </div>
             <div>
                 <label class="form-label">User Id </label>
                 <input type="number" class="form-control" placeholder="Enter User"
-                    [(ngModel)]="addTS.trainingPlan.user.userId" [ngModelOptions]="{standalone: true}">
+                    [(ngModel)]="trainingSummary.trainingPlan.user.userId" [ngModelOptions]="{standalone: true}">
             </div>
             <div>
                 <label class="form-label">Trainer Id </label>
                 <input type="number" class="form-control" placeholder="Enter Trainer Id"
-                    [(ngModel)]="addTS.trainingPlan.trainer.trainerId" [ngModelOptions]="{standalone: true}">
+                    [(ngModel)]="trainingSummary.trainingPlan.trainer.trainerId" [ngModelOptions]="{standalone: true}">
             </div>
             <div>
-                <button (click)="onSubmit()" class="btn btn-primary" style="margin-top: 10px;">Save</button>
+                <button (click)="updateData()" class="btn btn-primary" style="margin-top: 10px;">Update</button>
                 <button routerLink="/private/summary" class="btn btn-secondary"
                     style="margin-left: 10px; margin-top: 10px;">Cancel</button>
             </div>
-        </div>
+        </div></div>
     </form>
 </div>
