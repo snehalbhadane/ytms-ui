@@ -7,11 +7,14 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './view-details-training-summary.component.html',
   styleUrls: ['./view-details-training-summary.component.css']
 })
+
 export class ViewDetailsTrainingSummaryComponent implements OnInit {
+
   id: any
   allTrainingSummary: any;
   trainingPlan= 0;
   ids: any;
+
   constructor(private _tsService: TSserviceService, private _route: ActivatedRoute, private rout1: Router) { }
 
   ngOnInit(): void {
@@ -20,14 +23,13 @@ export class ViewDetailsTrainingSummaryComponent implements OnInit {
     this.getOne(this.ids)
   }
 
-  getOne(id: any) {
+  getOne(ids:any) {
     this._tsService.getTrainingDetailsById(this.ids).subscribe((data: any) => {
       console.log(data);
       this.allTrainingSummary = data;
     }
     )
   }
-
   updateTrainingSummary(trainingSummaryId:any){
     this.rout1.navigate(['private/summary/update/',trainingSummaryId]);
   }

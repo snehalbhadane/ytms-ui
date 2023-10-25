@@ -3,6 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TrainerprofileService } from '../../../Services/trainerprofile.service';
 import { TrainersTaskService } from '../../../Services/trainers-task.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-update-task',
@@ -11,7 +13,7 @@ import { TrainersTaskService } from '../../../Services/trainers-task.service';
 })
 export class UpdateTaskComponent implements OnInit {
 
-
+  message:boolean=false;
     addTrainerTask= new FormGroup({
       trainerTaskId:new FormControl(''),
       taskDate:new FormControl(''),
@@ -24,8 +26,9 @@ export class UpdateTaskComponent implements OnInit {
   })
   
 });
+  toastrService: any;
 
-  constructor(private trainertaskService:TrainersTaskService,private _router: Router,private acturouter:ActivatedRoute) { }
+  constructor(private trainertaskService:TrainersTaskService,private _router: Router,private acturouter:ActivatedRoute,toastrService: ToastrService) { }
 
   ngOnInit(): void {
 
@@ -61,7 +64,13 @@ export class UpdateTaskComponent implements OnInit {
 
    this.trainertaskService.updateTrainerTaskByTaskId(this.acturouter.snapshot.params['trainerTaskId'],this.addTrainerTask.value)
    .subscribe((data)=>{
+
+    this.message=true;
+
     console.log(data,"data update sucessfuly")
+
+    this.toastrService.success('TrainerTasks saved!', 'Success');
+    
     this._router.navigate(['/private/trainer/trainersWithTasklist']);
     
     //window.location.reload();

@@ -29,6 +29,14 @@ import { UpdateTaskComponent } from './component/trainer/Componets/TrainerTask/u
 import { CompleteTrainerProfileComponent } from './component/trainer/Componets/TrainerInfo/complete-trainer-profile/complete-trainer-profile.component';
 import { CommonpageComponent } from './component/trainer/Componets/commonpage/commonpage.component';
 import { UpdatetrainingsummaryComponent } from './component/trainingsummary/components/update-training-summary/updatetrainingsummary.component';
+import { UserComponent } from './component/UserDetail/user/user.component';
+import { UpdateUserComponent } from './component/UserDetail/update-user/update-user.component';
+import { TrainingPlanComponent } from './component/training/component/training-plan/training-plan.component';
+import { TrainingPerformanceReportComponent } from './component/training/component/training-performance-report/training-performance-report.component';
+import { DreyFusReportComponent } from './component/training/component/drey-fus-report/drey-fus-report.component';
+import { DailyProgressReportComponent } from './component/training/component/daily-progress-report/daily-progress-report.component';
+import { ListTrainingPlanComponent } from './component/training/component/list-training-plan/list-training-plan.component';
+import { UpdateTrainingPlanComponent } from './component/training/component/update-training-plan/update-training-plan.component';
 
 
 @NgModule({
@@ -56,6 +64,14 @@ import { UpdatetrainingsummaryComponent } from './component/trainingsummary/comp
     UpdateTaskComponent,
     CompleteTrainerProfileComponent,
     CommonpageComponent,
+    UserComponent,
+    UpdateUserComponent,
+    TrainingPlanComponent,
+    TrainingPerformanceReportComponent,
+    DreyFusReportComponent,
+    DailyProgressReportComponent,
+    ListTrainingPlanComponent,
+    UpdateTrainingPlanComponent,
 
   ],
   imports: [

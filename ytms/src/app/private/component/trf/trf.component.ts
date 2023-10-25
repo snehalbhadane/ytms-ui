@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/auth-guard/auth.service';
   styleUrls: ['./trf.component.css']
 })
 export class TrfComponent implements OnInit {
-
+ role_id:any;
   role:any;
   searchValue : any;
   columnDefs: ColDef[] = [
@@ -57,6 +57,9 @@ export class TrfComponent implements OnInit {
     let user = this.authService.getLoginUserDetails();
     this.role = user.role;
   }
+  
+  user = this.authService.getLoginUserDetails();
+  role_id1:any=this.user.role.roleId;
 
   onGridReady(params: GridReadyEvent) {
       this.trfService.getTrfList()

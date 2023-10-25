@@ -3,24 +3,25 @@
         <!-- <h4>Training Request Form</h4> -->
         <span style="font-weight: 700; margin-top: 0.4em;">Create Training Summary</span>
     </div>
+
 </div>
 <div class="card-body">
     <form>
-        <div>
-            <div class="mb-3">
+        <div class="row">
+            <div class="col">
                 <label class="form-label">Training Pattern</label>
                 <input type="text" class="form-control" placeholder="Enter Training Pattern"
                     [(ngModel)]="addTS.trainingPattern" [ngModelOptions]="{standalone: true}">
             </div>
-            <div class="mb-3">
-                <label class="form-label">Duration</label>
+            <div class="col">
+                <label class="form-label">Duration in Days</label>
                 <input type="text" class="form-control" placeholder="Enter Duration" [(ngModel)]="addTS.duration"
                     [ngModelOptions]="{standalone: true}">
             </div>
-            <div>
-                <label class="form-label">User Id </label>
-                <input type="number" class="form-control" placeholder="Enter User Id"
-                    [(ngModel)]="addTS.trainer.userId" [ngModelOptions]="{standalone: true}">
+            <div class="col">
+                <label class="form-label">Tariner Registraion Id </label>
+                <input type="number" class="form-control" placeholder="Enter User Id" [(ngModel)]="addTS.trainer.userId"
+                    [ngModelOptions]="{standalone: true}">
             </div>
         </div>
         <hr>
@@ -30,50 +31,57 @@
             </div>
         </div>
         <div class="card-body">
-            <div class="mb-3">
-                <label class="form-label">Training Name</label>
-                <input type="text" [(ngModel)]="addTS.trainingPlan.trainingName" placeholder="Enter Training name"
-                    class="form-control" [ngModelOptions]="{standalone: true}">
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">Training Name</label>
+                    <input type="text" [(ngModel)]="addTS.trainingPlan.trainingName" placeholder="Enter Training name"
+                        class="form-control" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="col">
+                    <label class="form-label">Topic Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Topic Name"
+                        [(ngModel)]="addTS.trainingPlan.topic" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="col">
+                    <label class="form-label">Contents Coverage</label>
+                    <input type="text" class="form-control" placeholder="Enter Content Coverage"
+                        [(ngModel)]="addTS.trainingPlan.contentsCoverage" [ngModelOptions]="{standalone: true}">
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">Extra Topic Coverage</label>
+                    <input type="text" class="form-control" placeholder="Enter Extra Topic Coverage"
+                        [(ngModel)]="addTS.trainingPlan.extraTopicCoverage" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="col">
+                    <label class="form-label">Duration</label>
+                    <input type="number" class="form-control" placeholder="Enter Duration"
+                        [(ngModel)]="addTS.trainingPlan.duration" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="col">
+                    <label class="form-label">Status</label>
+                    <input type="text" class="form-control" placeholder="Enter Status"
+                        [(ngModel)]="addTS.trainingPlan.status" [ngModelOptions]="{standalone: true}">
+                </div>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Topic Name</label>
-                <input type="text" class="form-control" placeholder="Enter Topic Name"
-                    [(ngModel)]="addTS.trainingPlan.topic" [ngModelOptions]="{standalone: true}">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Contents Coverage</label>
-                <input type="text" class="form-control" placeholder="Enter Content Coverage"
-                    [(ngModel)]="addTS.trainingPlan.contentsCoverage" [ngModelOptions]="{standalone: true}">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Extra Topic Coverage</label>
-                <input type="text" class="form-control" placeholder="Enter Extra Topic Coverage"
-                    [(ngModel)]="addTS.trainingPlan.extraTopicCoverage" [ngModelOptions]="{standalone: true}">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Duration</label>
-                <input type="number" class="form-control" placeholder="Enter Duration"
-                    [(ngModel)]="addTS.trainingPlan.duration" [ngModelOptions]="{standalone: true}">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Status</label>
-                <input type="text" class="form-control" placeholder="Enter Status"
-                    [(ngModel)]="addTS.trainingPlan.status" [ngModelOptions]="{standalone: true}">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Remark</label>
-                <input type="text" class="form-control" placeholder="Enter Remark"
-                    [(ngModel)]="addTS.trainingPlan.remark" [ngModelOptions]="{standalone: true}">
-            </div>
-            <div>
-                <label class="form-label">User Id </label>
-                <input type="number" class="form-control" placeholder="Enter User"
-                    [(ngModel)]="addTS.trainingPlan.user.userId" [ngModelOptions]="{standalone: true}">
-            </div>
-            <div>
-                <label class="form-label">Trainer Id </label>
-                <input type="number" class="form-control" placeholder="Enter Trainer Id"
-                    [(ngModel)]="addTS.trainingPlan.trainer.trainerId" [ngModelOptions]="{standalone: true}">
+            <br>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">Remark</label>
+                    <input type="text" class="form-control" placeholder="Enter Remark"
+                        [(ngModel)]="addTS.trainingPlan.remark" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="col">
+                    <label class="form-label">Planner Id</label>
+                    <input type="number" class="form-control" placeholder="Enter User"
+                        [(ngModel)]="addTS.trainingPlan.user.userId" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="col">
+                    <label class="form-label">Trainer Id </label>
+                    <input type="number" class="form-control" placeholder="Enter Trainer Id"
+                        [(ngModel)]="addTS.trainingPlan.trainer.trainerId" [ngModelOptions]="{standalone: true}">
+                </div>
             </div>
             <div>
                 <button (click)="onSubmit()" class="btn btn-primary" style="margin-top: 10px;">Save</button>

@@ -1,0 +1,78 @@
+<h2 style="text-align: center;">Trainers List</h2>
+
+
+
+<div class="container tbl-container">
+    <div class="row tbl-fixed">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>TrainingPlan Id</th>
+                    <th>Training Name</th>
+                    <th>Topic</th>
+                    <th>Contents Coverage</th>
+                    <th>Extra Topic Coverage</th>
+                    <th>Duration</th>
+                    <th>Planned Start Date</th>
+                    <th>Planned End Date</th>
+                    <th>Actual Start Date</th>
+                    <th>Actual End Date</th>
+                    <th>Status</th>
+                    <th>Remark</th>
+                    <th>Registration Id</th>
+                    <th>Trainer_Id</th>
+                    <th>Action</th>
+                    
+                   
+                </tr>
+            </thead>
+             <tbody>
+                <tr *ngFor="let tpl of listTrainingPlanComponent">
+                   
+                    <td>{{tpl.trainingPlanId}}</td>
+                    <td>{{tpl.trainingName}}</td>
+
+                    <td>{{tpl.topic}}</td>
+
+                    <td>{{tpl.contentsCoverage}}</td>
+
+                    <td>{{tpl.extraTopicCoverage}}</td>
+
+                    <td>{{tpl.duration}}</td>
+
+                    <td>{{tpl.plannedStartDate}}</td>
+                    <td>{{tpl.plannedEndDate}}</td>
+                    <td>{{tpl.actualStartDate}}</td>
+                    <td>{{tpl.actualEndDate}}</td>
+                    <td>{{tpl.status}}</td>
+                    <td>{{tpl.remark}}</td>
+                    <td>{{tpl.user.userId}}</td>
+                    <td>{{tpl.trainer.trainerId}}</td>
+                   
+
+
+                    <td>
+
+                        <!-- <button  class="btn btn-secondary"
+                    
+                         style="margin-left: 5px; "[routerLink]="['/private/trainer/view/'+tpl.trainingPlanId]"> Complete Profile View </button> -->
+
+                      <button  class="btn btn-secondary"
+                    
+                         style="margin-left: 5px; "[routerLink]="['/private/training/UpdatePlan/'+tpl.trainingPlanId]">Update Training Plan </button>
+
+                        <button (click)="deleteTrainer(tpl.trainingPlanId)" class="btn btn-secondary"
+
+                            style="margin-left: 5px;">Delete</button>
+
+                    </td>
+                </tr>
+            </tbody>
+            <button class="btn btn-secondary" style="margin-left: 0px;" routerLink='/private/training'>Back</button>
+        </table>
+
+    </div>
+</div>
+
+
+

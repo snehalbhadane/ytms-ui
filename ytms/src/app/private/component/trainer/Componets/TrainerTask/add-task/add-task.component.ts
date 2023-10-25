@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { TrainersTaskService } from '../../../Services/trainers-task.service';
 import { Router } from '@angular/router';
 import { DatePipe ,formatDate} from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class AddTaskComponent implements OnInit {
 
   minStartDate: any;
   minEndDate: any;
+  message:boolean=false;
 
     addTrainerTask= new FormGroup({
       taskDate:new FormControl(''),
@@ -26,7 +28,7 @@ export class AddTaskComponent implements OnInit {
   })
   
 });
-  constructor(private trainertaskService:TrainersTaskService,private _router: Router) { }
+  constructor(private trainertaskService:TrainersTaskService,private _router: Router,private toastrService: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -35,7 +37,8 @@ export class AddTaskComponent implements OnInit {
     console.log(this.addTrainerTask.value);
     
     this.trainertaskService.saveTrainerTask(this.addTrainerTask.value).subscribe((resutlt:any)=>{
-  
+
+      this.toastrService.success('TrainerTasks saved!', 'Success');
       console.log(resutlt);
   
    },(error) => {

@@ -52,6 +52,8 @@ export class ViewTrainingRequestComponent implements OnInit {
     this.trfService.getTrfListByStatus()
       .subscribe(
         (data: any) => {
+
+          console.log("row data checl"+data)
           this.rowData = data;
         },
         (err: any) => {

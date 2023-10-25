@@ -4,6 +4,7 @@ import { TrainerprofileService } from '../../../Services/trainerprofile.service'
 import { Router } from '@angular/router';
 import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 import { FormGroup,FormControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-save-trainer',
@@ -36,7 +37,7 @@ export class SaveTrainerComponent implements OnInit {
 //     zip: new FormControl('')
 //   })
 // });
-  constructor(private trainerprofileService :TrainerprofileService,private _router: Router) { }
+  constructor(private trainerprofileService :TrainerprofileService,private _router: Router,private toastrService: ToastrService) { }
 
   ngOnInit(): void {
 
@@ -57,10 +58,11 @@ export class SaveTrainerComponent implements OnInit {
 onSubmit(){
   console.log(this.addTrainer.value);
   this.trainerprofileService.addTrainer(this.addTrainer.value).subscribe((resutlt:any)=>{
-
+    this.toastrService.success('Trainer saved!', 'Success');
     console.log(resutlt);
 
  },(error) => {
+
        console.log(error);
    }
  )

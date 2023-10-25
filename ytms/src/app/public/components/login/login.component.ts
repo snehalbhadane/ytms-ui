@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(private router: Router, private apiService: ApiService, private toastrService: ToastrService, private authService: AuthService) { }
-
+role_id:any
   ngOnInit(): void {
   }
 
@@ -29,18 +29,28 @@ export class LoginComponent implements OnInit {
     let user = {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
+
+      
     }
     this.apiService.login(user).
       subscribe(res => {
-        if (res.status == "200") {
+        
+       
+        if (res.status == "200" && res.user.role.roleId!==4 ) {
+
+     
           this.toastrService.success('Login Successfully!', 'Success');
           this.authService.storeToken(res.authToken, res.user);
           this.router.navigateByUrl('/private');
+
+          console.log(res.user);
+          this.role_id=res.user.role.roleId;
+          console.log(this.role_id);
         }else {
           if(res.hasOwnProperty('error')){
-            this.toastrService.warning(res.error, 'Warning');
+            this.toastrService.warning(res.error, 'Warning1');
           }else {
-            this.toastrService.warning(res.message, 'Warning');
+            this.toastrService.warning(res.error, 'Admin is working on your registration kindly wait for some time');
           }
         }
       },

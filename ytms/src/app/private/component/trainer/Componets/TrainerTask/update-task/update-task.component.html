@@ -43,7 +43,11 @@
           <input type="number" class="form-control" placeholder="enter" formControlName="trainerId">
           </div>
   
-  <button type="submit" class="btn btn-primary">Save</button>
+  <button type="submit" class="btn btn-primary">Update</button>
+  <div *ngIf="message" class="alert alert-success" role="alert">
+  <h4 class="alert-heading">TaskUpdated</h4>
+  </div>
+  <button class="btn btn-secondary" style="margin-left: 15px;" routerLink='/private/trainer/trainersWithTasklist'>Back</button>
   
     </form>
   

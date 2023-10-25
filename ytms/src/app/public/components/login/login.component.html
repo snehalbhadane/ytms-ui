@@ -16,6 +16,10 @@
         <div class="invalid-feedback"
           *ngIf="this.loginForm.get('email')?.touched && this.loginForm.get('email')?.hasError('email')">
           Email must be a valid</div>
+
+        <div class="invalid-feedback"
+        *ngIf="role_id==4">
+         Admin is working your registraion kindly wait sometime</div>
       </div>
 
       <!-- Password input -->
@@ -35,16 +39,16 @@
       <div class="row mb-4">
         <div class="col d-flex justify-content-center">
           <!-- Checkbox -->
-          <div class="form-check">
+          <!-- <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" checked />
             <label class="form-check-label" > Remember me </label>
-          </div>
+          </div> -->
         </div>
 
-        <div class="col">
-          <!-- Simple link -->
+        <!-- <div class="col">
+         
           <a href="#!">Forgot password?</a>
-        </div>
+        </div> -->
       </div>
 
       <!-- Submit button -->
@@ -55,13 +59,12 @@
       <div class="text-center">
         <p>Not a member? <a [routerLink]="['../register']">Register</a></p>
         <p>or sign up with:</p>
-        <button type="button" class="btn btn-link btn-floating mx-1">
+        <a href= "https://www.facebook.com/" type="button" class="btn btn-link btn-floating mx-1">
           <i class="fab fa-facebook-f"></i>
-        </button>
+        </a>
 
-        <button type="button" class="btn btn-link btn-floating mx-1">
-          <i class="fab fa-google"></i>
-        </button>
+        <a href="https://www.google.co.in/" type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-google"></i></a>
 
         <button type="button" class="btn btn-link btn-floating mx-1">
           <i class="fab fa-twitter"></i>

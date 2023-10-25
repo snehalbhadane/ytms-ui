@@ -57,7 +57,7 @@
                </div>
                <div class="form-outline col-md-6 mt-3">
                   <label style="font-size: small; margin-bottom: 0rem;">Phone Number</label>
-                  <input type="tel" formControlName="phoneNumber" placeholder="Phone Number" class="form-control" />
+                  <input type="tel" formControlName="phoneNumber" placeholder="(+91)Phone Number" class="form-control" />
                   <div class="invalid-feedback"
                      *ngIf="this.registerForm.get('phoneNumber')?.touched && this.registerForm.get('phoneNumber')?.hasError('required')">
                      Phone Number is required</div>
@@ -124,7 +124,7 @@
             <div class="row">
                <div class="form-outline col-md-6 mt-3">
                   <label style="font-size: small; margin-bottom: 0rem;">Password</label>
-                  <input type="text" formControlName="password" placeholder="Password" class="form-control" required />
+                  <input type="password" formControlName="password" placeholder="Password" class="form-control" required />
                   <div class="invalid-feedback"
                      *ngIf="this.registerForm.get('password')?.touched && this.registerForm.get('password')?.hasError('required')">
                      Password is required</div>
@@ -136,7 +136,7 @@
                </div>
                <div class="form-outline col-md-6 mt-3">
                   <label style="font-size: small; margin-bottom: 0rem;">Confirm Password</label>
-                  <input type="text" formControlName="passwordConfirm" placeholder="Confirm Password"
+                  <input type="password" formControlName="passwordConfirm" placeholder="Confirm Password"
                      class="form-control" required />
                   <div class="invalid-feedback"
                      *ngIf="this.registerForm.get('passwordConfirm')?.touched && this.registerForm.get('passwordConfirm')?.hasError('required')">
@@ -159,6 +159,10 @@
                   Designation is required</div>
             </div>
             <!-- Submit button -->
+            <div *ngIf="message" class="alert alert-success" role="alert">
+               <h4 class="alert-heading">Role is Updated</h4>
+               <!-- <button (click)="removeMsg()" type="button"  data-bs-dismiss="alert" aria-label="Close">X</button> -->
+             </div>
             <button type="button" (click)="register()" [disabled]="!registerForm.valid"
                class="col-md-12 mt-md-0 mt-3 btn btn-primary btn-block mb-4">Sign Up</button>
             <!-- Register buttons -->

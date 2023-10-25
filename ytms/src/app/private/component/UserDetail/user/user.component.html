@@ -1,0 +1,63 @@
+
+<h2 style="text-align: center;">Register User</h2>
+
+<div class="container tbl-container">
+    <div class="row tbl-fixed">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>userId</th>
+                    <th>empCode</th>
+                    <th>firstName</th>
+                    <th>lastName</th>
+                    <th>email</th>
+                    <th>mobile</th>
+                    <th>gender  </th>
+                    <th>experience</th>
+                    <th>location</th>
+                    <th>project  </th>
+                    <th>designation</th>
+                    <th>createdOn  </th>
+                    <th>updatedDate</th>
+                    <th>Action</th>
+                   
+                </tr>
+            </thead>
+             <tbody>
+                <tr *ngFor="let ts of userDetail">
+                   
+                    <td>{{ts.userId}}</td>
+                    <td>{{ts.empCode}}</td>
+                    <td>{{ts.firstName}}</td>
+                    <td>{{ts.lastName}}</td>
+                    <td>{{ts.email}}</td>
+                    <td>{{ts.mobile}}</td>
+                    <td>{{ts.gender}}</td>
+                    <td>{{ts.experience}}</td>
+                    <td>{{ts.location}}</td>
+                    <td>{{ts.project}}</td>
+                    <td>{{ts.designation}}</td>
+                    <td>{{ts.createdOn}}</td>
+                    <td>{{ts.updatedDate}}</td>
+
+                    <td>
+
+
+                        <button  class="btn btn-secondary"
+                    
+                         style="margin-left: 5px; "[routerLink]="['/private/UserDetails/userUpadte/'+ts.userId]"> Assign Role</button>
+
+                        <!-- <button (click)="deleteTrainer(ts.trainerId)" class="btn btn-secondary"
+
+                            style="margin-left: 5px;">Delete</button> -->
+
+                    </td>
+                </tr>
+            </tbody>
+            <button class="btn btn-secondary" style="margin-left: 0px;" routerLink='/private/dashboard'>Back</button>
+        </table>
+
+    </div>
+</div>
+
+

@@ -1,0 +1,105 @@
+<div class="card-header">
+    <div style="justify-content: space-between; display: flex;">
+        <!-- <h4>Training Request Form</h4> -->
+        <span style="font-weight: 700; margin-top: 0.4em;">Create Training Training Plan</span>
+    </div>
+</div>
+<div>
+    <form>
+        <div class="row">
+            <div class="col"> 
+            <label class="form-label">TrainingName</label>
+            <input type="text" class="form-control" placeholder="TrainingName" [(ngModel)]="trainingPlan.trainingName"[ngModelOptions]="{standalone: true}">
+             </div>
+
+            <div class="col">
+                <label class="form-label">Topic</label>
+                <input type="text" class="form-control" placeholder="Enter Topic"
+                    [(ngModel)]="trainingPlan.topic" [ngModelOptions]="{standalone: true}">
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <label class="form-label">Contents Coverage</label>
+                <input type="text" class="form-control" placeholder="Contents Coverage"
+                    [(ngModel)]="trainingPlan.contentsCoverage" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="col">
+                <label class="form-label">Extra Topic Coverage </label>
+                <input type="text" class="form-control" placeholder="Enter Extra Topic Coverage"
+                    [(ngModel)]="trainingPlan.extraTopicCoverage" [ngModelOptions]="{standalone: true}">
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <label class="form-label">Duration in days</label>
+                <input type="number" class="form-control" placeholder="Enter Duration"
+                    [(ngModel)]="trainingPlan.duration" [ngModelOptions]="{standalone: true}">
+            </div>
+
+            <div class="col">
+                <label class="form-label">Planned Start Date</label>
+                <input type="date" class="form-control" placeholder="Enter Start Date"
+                    [(ngModel)]="trainingPlan.plannedStartDate" [ngModelOptions]="{standalone: true}">
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <label class="form-label">Planned EndDate</label>
+                <input type="date" class="form-control" placeholder="Enter Planned EndDate"
+                    [(ngModel)]="trainingPlan.plannedEndDate" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="col">
+                <label class="form-label">Actual StartDate</label>
+                <input type="date" class="form-control" placeholder="Enter Actual StartDate"
+                    [(ngModel)]="trainingPlan.actualStartDate" [ngModelOptions]="{standalone: true}">
+            </div>
+        </div>
+          <hr>
+          <div class="row">
+            <div class="col">
+                <label class="form-label">Actual EndDate </label>
+                <input type="date" class="form-control" placeholder="EnterActual EndDate"
+                    [(ngModel)]="trainingPlan.actualEndDate" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="col">
+                <label class="form-label">Status </label>
+                <input type="text" class="form-control" placeholder="Enter Status"
+                    [(ngModel)]="trainingPlan.status" [ngModelOptions]="{standalone: true}">
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <label class="form-label">Remark</label>
+                <input type="text" class="form-control" placeholder="Enter Remark"
+                    [(ngModel)]="trainingPlan.remark" [ngModelOptions]="{standalone: true}">
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <label class="form-label">Registration Id</label>
+                <input type="number" class="form-control" placeholder="Enter User"
+                    [(ngModel)]="trainingPlan.user.userId" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="col">
+                <label class="form-label">Trainer Id </label>
+                <input type="number" class="form-control" placeholder="Enter Trainer Id"
+                    [(ngModel)]="trainingPlan.trainer.trainerId" [ngModelOptions]="{standalone: true}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+            <div>
+                <button (click)="saveTrainingPlan()" class="btn btn-primary" style="margin-top: 10px;">Save</button>
+                <button routerLink="/private/training" class="btn btn-secondary"
+                    style="margin-left: 10px; margin-top: 10px;">Cancel</button>
+            </div>
+        </div>
+        </div>
+    </form>
+</div>

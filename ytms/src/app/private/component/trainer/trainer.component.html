@@ -3,23 +3,32 @@
         <h4>Trainer</h4>
     </div>
 </div>
-<div class="card-body">
 
-    <button class="btn btn-primary" style="float: inline-end; margin-bottom: 10px;" routerLink="trainerslist"
+
+    
+
+<div class="card-body" >
+    <div *ngIf="role_id1 ===5 ||role_id1 ===6 ||role_id1 ===3">
+    <button  class="btn btn-primary" style="float: inline-end; margin-bottom: 10px;" routerLink="trainerslist"
     routerLinkActive="active">View Trainers</button>
-
+    </div>
     <button class="btn btn-primary" style="float: inline-end; margin-bottom: 10px;" routerLink="save"
     routerLinkActive="active">Add Trainer</button>
 
-    <button class="btn btn-primary" style="float: inline-end; margin-bottom: 10px;" routerLink="addTask"
-    routerLinkActive="active">Add TrainerTask</button>
+    <button *ngIf="role.roleName ==='ROLE_TRAINER'" class="btn btn-primary" style="float: inline-end; margin-bottom: 10px;" routerLink="addTask"
+    routerLinkActive="active">Add TrainerTask For Trainer</button>
 
     <button class="btn btn-primary" style="float: inline-end; margin-bottom: 10px;" routerLink="trainersWithTasklist"
     routerLinkActive="active">Check TrainerTask</button>
 
-    <button  class="btn btn-primary"
-                    
-    style="margin-left: 5px; "[routerLink]="['updateTask/'+listTrainersTaskComponent.trainerTaskId]"> Update Task </button>
+
+
 
     
+
+    <!-- <button  class="btn btn-primary"
+                    
+    style="margin-left: 5px; "[routerLink]="['updateTask/'+listTrainersTaskComponent.trainerTaskId]"> Update Task </button> -->
+
 </div>
+

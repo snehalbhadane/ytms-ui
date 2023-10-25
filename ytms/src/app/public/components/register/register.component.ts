@@ -22,12 +22,17 @@ export class RegisterComponent implements OnInit {
       value: "projectManager"
     },
     {
-      name: "Trainee",
-      value: "trainee"
+      name: "Trainer",
+      value: "Trainer"
     },
     {
       name: "Junior Manager",
-      value: "juniorManager"
+      value: "junior_Manager"
+    },
+
+    {
+      name: "Sr Manager",
+      value: "Sr_Manager"
     }
   ];
   registerForm = new FormGroup({
@@ -50,6 +55,7 @@ export class RegisterComponent implements OnInit {
   )
 
   constructor(private apiService: ApiService, private router: Router, private toastrService: ToastrService) { }
+  message:boolean=false;
 
   ngOnInit(): void {
   }
@@ -82,6 +88,7 @@ export class RegisterComponent implements OnInit {
             this.toastrService.success('Register Successfully!', 'Success');
             this.router.navigate(['/public/login']);
           }
+          this.message=true;
         } else {
 
         }
