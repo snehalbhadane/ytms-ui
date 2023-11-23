@@ -12,9 +12,15 @@
     <button  class="btn btn-primary" style="float: inline-end; margin-bottom: 10px;" routerLink="trainerslist"
     routerLinkActive="active">View Trainers</button>
     </div>
-    <button class="btn btn-primary" style="float: inline-end; margin-bottom: 10px;" routerLink="save"
-    routerLinkActive="active">Add Trainer</button>
 
+        <button class="btn btn-primary" *ngIf="role_id1===1" style="float: inline-end; margin-bottom: 10px;" routerLink="save"
+        routerLinkActive="active">Update Your Profile</button>
+        
+
+    <!-- <div *ngIf="role_id1===1"> 
+    <button class="btn btn-primary" style="float: inline-end; margin-bottom: 10px;" routerLink="save"
+    routerLinkActive="active">Update Your Profile</button>
+      </div> -->
     <button *ngIf="role.roleName ==='ROLE_TRAINER'" class="btn btn-primary" style="float: inline-end; margin-bottom: 10px;" routerLink="addTask"
     routerLinkActive="active">Add TrainerTask For Trainer</button>
 

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiService } from '../../service/api.service';
-import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/auth-guard/auth.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,8 @@ export class LoginComponent implements OnInit {
     password: new FormControl(null, [Validators.required, Validators.pattern(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/)]),
   });
 
-  constructor(private router: Router, private apiService: ApiService, private toastrService: ToastrService, private authService: AuthService) { }
+ constructor(private router1:Router, private apiService: ApiService, private toastrService: ToastrService, private authService: AuthService)
+  { }
 role_id:any
   ngOnInit(): void {
   }
@@ -41,7 +42,7 @@ role_id:any
      
           this.toastrService.success('Login Successfully!', 'Success');
           this.authService.storeToken(res.authToken, res.user);
-          this.router.navigateByUrl('/private');
+          this.router1.navigateByUrl('/private');
 
           console.log(res.user);
           this.role_id=res.user.role.roleId;

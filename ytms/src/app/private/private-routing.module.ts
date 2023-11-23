@@ -35,8 +35,8 @@ const routes: Routes = [
     component: PrivateComponent,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-      { path: 'trf', component: TrfComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_USER","ROLE_ADMIN","ROLE_MANAGER","TRAING_MANGER"] } },
-      { path: 'trf/create', component: CreateTrfComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_USER","ROLE_ADMIN","ROLE_MANAGER","TRAING_MANGER"] } },
+      { path: 'trf', component: TrfComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_USER","ROLE_ADMIN","ROLE_MANAGER","TRAING_MANGER","ROLE_TRAINER"] } },
+      { path: 'trf/create', component: CreateTrfComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_USER","ROLE_ADMIN","ROLE_MANAGER","TRAING_MANGER","ROLE_TRAINER"] } },
       { path: 'trf/view-request', component: ViewTrainingRequestComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_USER","ROLE_ADMIN","ROLE_MANAGER","TRAING_MANGER"] } },
       //{ path: 'trf/view-request', component: TrfActionComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_USER","ROLE_ADMIN","ROLE_MANAGER","TRAING_MANGER"] } },
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_USER","ROLE_ADMIN","ROLE_TRAINER","ROLE_MANAGER","TRAING_MANGER","ROLE_USER"] }  },

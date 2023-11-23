@@ -1,7 +1,7 @@
 <form [formGroup]="addTrainerTask" (ngSubmit)="onSubmitTask()">
 
   <div class="col">
-    <label style="font-size: small; margin-bottom: 0rem;">taskDate Date</label>
+    <label style="font-size: small; margin-bottom: 0rem;">TaskDate Date</label>
     <input type="date" [min]="minStartDate" (change)="onStartDateChange($event)" formControlName="taskDate" class="form-control">
     
 </div>
@@ -34,7 +34,6 @@
    
       <div formGroupName="trainer">
         <h2>Trainer</h2>
-      
         <label class ="form-label">trainerId </label>
         <input type="number" class="form-control" placeholder="enter" formControlName="trainerId">
         </div>
