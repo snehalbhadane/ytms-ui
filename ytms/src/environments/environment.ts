@@ -14,7 +14,8 @@ export const environment = {
   logoutUrl : "/useraccess/logout",
   getTrfByStatus : "/trf/getTrfByStatus",
   updateTrfStatus : "/trf/updateTrfStatus",
-  getCTRList: "/tsm/getTrainigSummaryDetails"
+  getCTRList: "/tsm/getTrainigSummaryDetails",
+  getDesignation:"/designation/get-all-designation"
 };
 
 /*

@@ -12,29 +12,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RegisterComponent implements OnInit {
 
-  designationList: any = [
-    {
-      name: "Sr. Software Engg",
-      value: "srSoftwareEngg"
-    },
-    {
-      name: "Project Manager",
-      value: "projectManager"
-    },
-    {
-      name: "Trainer",
-      value: "Trainer"
-    },
-    {
-      name: "Junior Manager",
-      value: "junior_Manager"
-    },
+  designationList: any = [ ];
 
-    {
-      name: "Sr Manager",
-      value: "Sr_Manager"
-    }
-  ];
   registerForm = new FormGroup({
     firstName: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.maxLength(20), Validators.pattern('^[a-zA-Z]+$')]),
     lastName: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern('^[a-zA-Z]+$')]),
@@ -58,6 +37,7 @@ export class RegisterComponent implements OnInit {
   message:boolean=false;
 
   ngOnInit(): void {
+    this.designation();
   }
 
   register() {
@@ -96,5 +76,15 @@ export class RegisterComponent implements OnInit {
       err => {
         this.toastrService.error('An error has occured, Please try again!', 'Error');
       });
+  }
+
+  designation(){
+    this.apiService.getDesignation().subscribe((data:any)=>{
+      this.designationList=data;
+      console.log(data);
+    },
+    (error)=>{
+      console.log(error);
+    });
   }
 }

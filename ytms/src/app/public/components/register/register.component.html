@@ -150,8 +150,11 @@
                <label style="font-size: small; margin-bottom: 0rem;">Designation</label>
                <select class="form-control" formControlName="designation">
                   <option [ngValue]="null" selected disabled> Select Designation </option>
-                  <option *ngFor="let e of designationList" [value]="e.value">
-                     {{e.name}}
+                  <!-- <option *ngFor="let e of designationList" [ngValue]="e">
+                     {{e.des_Name}}
+                  </option> -->
+                  <option *ngFor="let e of designationList">
+                     {{e.des_Name}}
                   </option>
                </select>
                <div class="invalid-feedback"

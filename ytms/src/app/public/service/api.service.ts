@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-
   constructor(private http: HttpClient) { }
 
   // Registering new users to the system
@@ -28,5 +27,11 @@ export class ApiService {
         headers:
           { 'Content-Type': 'application/json' }
       });
+  }
+
+  getDesignation() {
+    console.log("designation call");
+    return this.http.get(environment.baseUrl + environment.getDesignation);
+
   }
 }
