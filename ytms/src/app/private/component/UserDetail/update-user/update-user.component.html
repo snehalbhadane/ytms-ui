@@ -1,100 +1,89 @@
 <form [formGroup]="UpdateUserRole" (ngSubmit)="collectionsUpdate()">
 
-    <!-- <div class="mb-3">
+  <!-- <div class="mb-3">
       <label class ="form-label" style="font-size: meddium; margin-bottom: 1rem;">UserId</label>
       <input type="number" class="form-control" placeholder="enter" formControlName="user.userId">
     </div> -->
 
-    <div class="mb-3">
-        <label class ="form-label">Registraion Id</label>
-        <input type="number" class="form-control" placeholder="enter" formControlName="userId">
-      </div>
+  <div class="mb-3">
+    <label class="form-label">Registraion Id</label>
+    <input type="number" class="form-control" placeholder="enter" formControlName="userId">
+  </div>
 
-    <div class="mb-3">
-      <label class ="form-label">EmpCode</label>
-      <input type="text" class="form-control" placeholder="enter" formControlName="empCode">
-    </div>
+  <div class="mb-3">
+    <label class="form-label">EmpCode</label>
+    <input type="text" class="form-control" placeholder="enter" formControlName="empCode">
+  </div>
 
-    <div class="mb-3">
-      <label class ="form-label">FirstName</label>
-      <input type="text" class="form-control" placeholder="enter" formControlName="firstName">
-    </div>
+  <div class="mb-3">
+    <label class="form-label">FirstName</label>
+    <input type="text" class="form-control" placeholder="enter" formControlName="firstName">
+  </div>
 
-    <div class="mb-3">
-      <label class ="form-label">LastName</label>
-      <input type="text" class="form-control" placeholder="enter" formControlName="lastName">
-    </div>
+  <div class="mb-3">
+    <label class="form-label">LastName</label>
+    <input type="text" class="form-control" placeholder="enter" formControlName="lastName">
+  </div>
 
-    <div class="mb-3">
-        <label class ="form-label">Email</label>
-        <input type="text" class="form-control" placeholder="enter" formControlName="email">
-      </div>
-      <div class="mb-3">
-        <label class ="form-label">Password</label>
-        <input type="text" class="form-control" placeholder="enter" formControlName="password">
-      </div>
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input type="text" class="form-control" placeholder="enter" formControlName="email">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Password</label>
+    <input type="text" class="form-control" placeholder="enter" formControlName="password">
+  </div>
 
-      <div class="mb-3">
-        <label class ="form-label">Contact No</label>
-        <input type="text" class="form-control" placeholder="enter" formControlName="mobile">
-      </div>
-      <div class="mb-3">
-        <label class ="form-label">Gender</label>
-        <input type="text" class="form-control" placeholder="enter" formControlName="gender">
-      </div>
-      <div class="mb-3">
-        <label class ="form-label">Experience</label>
-        <input type="text" class="form-control" placeholder="enter" formControlName="experience">
-      </div>
-      <div class="mb-3">
-        <label class ="form-label">Location</label>
-        <input type="text" class="form-control" placeholder="enter" formControlName="location">
-      </div>
-      <div class="mb-3">
-        <label class ="form-label">Designation</label>
-        <input type="text" class="form-control" placeholder="enter" formControlName="designation">
-      </div>
-      <div class="mb-3">
-        <label class ="form-label">CreatedOn</label>
-        <input type="text" class="form-control" placeholder="enter" formControlName="createdOn">
-      </div>
-      <div class="mb-3">
-        <label class ="form-label">UpdatedDate</label>
-        <input type="text" class="form-control" placeholder="enter" formControlName="updatedDate">
-      </div>
+  <div class="mb-3">
+    <label class="form-label">Contact No</label>
+    <input type="text" class="form-control" placeholder="enter" formControlName="mobile">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Gender</label>
+    <input type="text" class="form-control" placeholder="enter" formControlName="gender">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Experience</label>
+    <input type="text" class="form-control" placeholder="enter" formControlName="experience">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Location</label>
+    <input type="text" class="form-control" placeholder="enter" formControlName="location">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Designation</label>
+    <input type="text" class="form-control" placeholder="enter" formControlName="designation">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">CreatedOn</label>
+    <input type="text" class="form-control" placeholder="enter" formControlName="createdOn">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">UpdatedDate</label>
+    <input type="text" class="form-control" placeholder="enter" formControlName="updatedDate">
+  </div>
 
-      <div formGroupName="role">
-        <h2>Role Id</h2>
-        <!-- <h5>Role Id:1, Roll Name:ROLE_TRAINER</h5>
-        <h5>Role Id:2, Roll Name:ROLE_USER</h5>
-        <h5>Role Id:5, Roll Name:ROLE_MANAGER</h5>
-        <h5>Role Id:6, Roll Name:TRAING_MANGER</h5> -->
-        <label class ="form-label">roleid </label>
-        <input type="any" class="form-control" placeholder="enter" formControlName="roleId">
-        </div>
-      <!-- <div formGroupName="Role">
-      <h2>Assign Role Id</h2>
-      <label for="number">1-User, 2-Trainer</label>
-      <select id="inputState" class="form-control" placeholder="enter" formControlName="roleId">
-        <option selected>Choose...</option>
-        <option>1</option>
-        <option>2</option>
-      </select>
-    </div> -->
+  <div formGroupName="role">
+    <h2>Role Id</h2>
+    <label class="form-label">Role</label>
+    <select class="form-control" formControlName="roleId">
+      <option [ngValue]="null" selected disabled> role Id </option>
 
-    
+      <option *ngFor="let e of roleList" value="{{e.roleId}}" id="{{e.roleId}}">
+        {{e.roleId}}
+         {{e.roleName}}
+      </option>
+    </select>
+  </div>
 
-      
-<button type="submit" class="btn btn-primary">Update</button>
+  <button type="submit" class="btn btn-primary">Update</button>
 
-<div *ngIf="message" class="alert alert-success" role="alert">
-  <h4 class="alert-heading">Role is Updated</h4>
-  <button (click)="removeMsg()" type="button"  data-bs-dismiss="alert" aria-label="Close">X</button>
-</div>
+  <div *ngIf="message" class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Role is Updated</h4>
+    <button (click)="removeMsg()" type="button" data-bs-dismiss="alert" aria-label="Close">X</button>
+  </div>
 
 
-<button class="btn btn-secondary" style="margin-left: 15px;" routerLink='/private/UserDetails'>Back</button>
+  <button class="btn btn-secondary" style="margin-left: 15px;" routerLink='/private/UserDetails'>Back</button>
 
-  </form>
-  
-  
+</form>

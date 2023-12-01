@@ -10,6 +10,7 @@ import { UserService } from '../Services/user.service';
 })
 export class UpdateUserComponent implements OnInit {
 
+  roleList: any;
   UpdateUserRole= new FormGroup({
 
   
@@ -38,7 +39,7 @@ export class UpdateUserComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+    this.role();
     this.acturouter.snapshot.params['userId']
 
     this.UserdetaileService.getUserById (this.acturouter.snapshot.params['userId']).subscribe((data: any)=>{
@@ -93,6 +94,16 @@ collectionsUpdate(){
 
 removeMsg(){
   this.message=false;
+}
+
+role(){
+  this.UserdetaileService.getRole().subscribe((data:any)=>{
+    this.roleList=data;
+    console.log(data);
+  },
+  (error)=>{
+    console.log(error);
+  });
 }
 
 }

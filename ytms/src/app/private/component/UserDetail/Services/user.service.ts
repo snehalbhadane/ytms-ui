@@ -32,4 +32,10 @@ updateUserById(id:any,data:any): Observable<Object> {
   return this.httpClient1.put(`${this.baseURLT+'/updateUser'}/${id}`,data);
 }
 
+getRole() {
+  console.log("Role call");
+  return this.httpClient1.get("http://localhost:8080/role"+'/get-all-rolles');
+
+}
+
 }
