@@ -41,16 +41,27 @@
     <div class="mb-3">
       <label class ="form-label">CurrentLocation</label>
       <input type="text" class="form-control" placeholder="enter" formControlName="currentLocation">
+      <div style="color:red;"
+      *ngIf="addTrainer.controls['currentLocation'].touched && addTrainer.controls['currentLocation'].invalid">
+      <span *ngIf="addTrainer.controls['currentLocation'].hasError('required')">Current Location is Required</span>
+    </div>
     </div>
 
     <div class="mb-3">
       <label class ="form-label">BaseLocation</label>
       <input type="text" class="form-control" placeholder="enter" formControlName="baseLocation">
+      <div style="color:red;"
+      *ngIf="addTrainer.controls['baseLocation'].touched && addTrainer.controls['baseLocation'].invalid">
+      <span *ngIf="addTrainer.controls['baseLocation'].hasError('required')">Base Location is Required</span>
+    </div>
     </div>
 
     <div class="mb-3">
       <label class ="form-label">IRM</label>
       <input type="text" class="form-control" placeholder="enter" formControlName="irm">
+      <div style="color:red;" *ngIf="addTrainer.controls['irm'].touched && addTrainer.controls['irm'].invalid">
+        <span *ngIf="addTrainer.controls['irm'].hasError('required')">IRM is Required</span>
+      </div>
     </div>
 
     <!-- <div class="mb-3">
@@ -65,18 +76,25 @@
         <option>Contract</option>
         <option>Permanent</option>
       </select>
+      <div style="color:red;" *ngIf="addTrainer.controls['type'].touched && addTrainer.controls['type'].invalid">
+        <span *ngIf="addTrainer.controls['type'].hasError('required')">Type is Required</span>
+      </div>
     </div>
     <div class="mb-3">
       <label class ="form-label">TotalExperience</label>
       <input type="text" class="form-control" placeholder="enter" formControlName="totalExperience">
+      <div style="color:red;"
+      *ngIf="addTrainer.controls['totalExperience'].touched && addTrainer.controls['totalExperience'].invalid">
+      <span *ngIf="addTrainer.controls['totalExperience'].hasError('required')">Total Experience is Required</span>
+    </div>
     </div>
 
     <div formGroupName="user">
       <h2>Registraion Id</h2>
-    
       <label class ="form-label">UserId </label>
-      <input type="number" class="form-control" placeholder="enter" formControlName="userId">
+      <input type="text" class="form-control" placeholder="enter" formControlName="userId">
       </div>
+      <br>
 <button type="submit" class="btn btn-primary">Save</button>
 <button class="btn btn-secondary" style="margin-left: 15px;" routerLink='/private/trainer'>Back</button>
 
