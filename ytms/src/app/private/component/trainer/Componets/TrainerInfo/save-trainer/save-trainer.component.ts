@@ -16,30 +16,8 @@ export class SaveTrainerComponent implements OnInit {
   addTrainer!: FormGroup;
   saveTrainerComponent: Trainer = new Trainer();
   locationData:any[]=[];
+ 
 
-  // addTrainer = new FormGroup({
-
-
-  //   currentLocation: new FormControl('', Validators.required),
-  //   baseLocation: new FormControl('', Validators.required),
-  //   irm: new FormControl('', Validators.required),
-  //   type: new FormControl('', Validators.required),
-  //   totalExperience: new FormControl('', Validators.required),
-  //   user: new FormGroup({
-  //     userId: new FormControl('', Validators.required)
-
-  //   })
-  // });
-  // profileForm = new FormGroup({
-  //   firstName: new FormControl(''),
-  //   lastName: new FormControl(''),
-  //   address: new FormGroup({
-  //     street: new FormControl(''),
-  //     city: new FormControl(''),
-  //     state: new FormControl(''),
-  //     zip: new FormControl('')
-  //   })
-  // });
   constructor(private fb: FormBuilder, private trainerprofileService: TrainerprofileService, private _router: Router, private toastrService: ToastrService, private locationService: LocationService) { }
 
   ngOnInit(): void {
@@ -57,18 +35,6 @@ export class SaveTrainerComponent implements OnInit {
       }
     )
   }
-  // saveTrainer(){
-
-  //   this.trainerprofileService.addTrainer(this.saveTrainerComponent).subscribe((data:any)=>{
-  //  console.log(data);
-  //   },
-  //   (error) => {
-  //     console.log(error);
-  //   }
-  //   )
-
-  // }
-
   onSubmit() {
     if (this.addTrainer.valid) {
       this.trainerprofileService.addTrainer(this.addTrainer.value).subscribe((resutlt: any) => {
